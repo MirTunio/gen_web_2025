@@ -29,6 +29,4 @@ We've packed Board full of powerful features to help showcase your work:
 
 ## Get Board
 
-Board is created and supported by [Jekyll Themes](https://jekyllthemes.io), and is available for $49.
-
-<a href="https://jekyllthemes.io/theme/board-portfolio-jekyll-theme" class="button button--large">Get This Theme</a>
+Board is created and supported by [Jekyll Themes](https://jekyllthemes.io), 

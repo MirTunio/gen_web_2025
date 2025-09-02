@@ -8,17 +8,19 @@ header_settings:
 
 menu_settings:
   menu_items:
-    - title: 'Projects'
+    - title: 'Generative Art'
       url: '/'
-    - title: 'Blog'
-      url: '/blog/'
+    - title: 'Stories'
+      url: '/blog/' # change to fiction stories
+    - title: 'Essays'
+      url: '/blog/' # change to essays
     - title: 'About'
       url: '/about'
     - title: 'Contact'
       url: '/contact'
 
 footer_settings:
-  footer_tagline: Board – a stylish full-width masonry grid Jekyll theme
+  footer_tagline:
 
 grid_settings:
   overlay_opacity: 0.8
@@ -60,16 +62,16 @@ social_settings:
   linkedin_url: ''
 
 color_settings:
-  background_color: '#ffffff'
+  background_color: '#F4F5F6' # '#ffffff'
   background_alt_color: '#f4f5f6'
   text_dark_color: '#2A2F36'
   text_medium_color: '#6C7A89'
   text_light_color: '#ABB7B7'
   accent_color: '#4ecdc4'
   border_color: '#dddddd'
-  overlay_background_color: '#4ecdc4'
+  overlay_background_color: '#ffffff' # '#4ecdc4'
   overlay_text_color: '#ffffff'
-  overlay_accent_color: '#2A2F36'
+  overlay_accent_color: '#2A2F36' # '#2A2F36'
   error_color: '#D64541'
 
 font_settings:
