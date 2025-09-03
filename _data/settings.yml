@@ -1,5 +1,5 @@
 basic_settings:
-  site_title: Generative Art
+  site_title: Burning Daylight
   favicon_image: /images/favicon.png
 
 header_settings:
@@ -8,7 +8,7 @@ header_settings:
 
 menu_settings:
   menu_items:
-    - title: 'Art'
+    - title: 'Generative Art'
       url: '/'
     - title: 'Stories'
       url: '/blog/' # change to fiction stories
