@@ -1,5 +1,5 @@
 ---
-ltitle: 'M42 Web test'
+title: 'M42 Web test'
 subtitle: 'This is not a test'
 date: 2018-06-30 00:00:00
 description: Board is a stylish full-width masonry grid theme. Made for designers, artists, photographers and developers to show off their best work.
