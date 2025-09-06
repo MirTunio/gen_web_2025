@@ -3,7 +3,7 @@ ltitle: 'M42 Web test'
 subtitle: 'This is not a test'
 date: 2018-06-30 00:00:00
 description: Board is a stylish full-width masonry grid theme. Made for designers, artists, photographers and developers to show off their best work.
-featured_image: '/images/demo/square-05.jpg
+featured_image: '/images/demo/essay-01.jpg'
 ---
 
 ## Background
@@ -37,7 +37,6 @@ Through research, iteration, and responsible deployment we ensure that our syste
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
   <script src="mySketch.js"></script>
 </div>
-
 <br>
 
 
