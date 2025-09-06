@@ -9,20 +9,20 @@ featured_image: /images/social.jpg
 
 	<div class="content-wrap listing-wrap">
 
-		{% for post in paginator.posts %}
+		{% for essay in essays.posts %}
 
 		<article class="listing-item">
 
-			<a class="listing-item__link" href="{{ post.url | relative_url }}">
+			<a class="listing-item__link" href="{{ essay.url | relative_url }}">
 
 				<div class="listing-item__image">
-					<img src="{{ post.featured_image | relative_url }}" alt="{{ post.title }}">
+					<img src="{{ essay.featured_image | relative_url }}" alt="{{ essay.title }}">
 				</div>
 
 				<div class="listing-item__content listing-item__content--{{ site.data.settings.grid_settings.content_alignment }}">
 					<div class="listing-item__info">
-						<h2 class="listing-item__title">{{ post.title }}</h2>
-						<p class="listing-item__subtitle">{{ post.date | date_to_long_string }}</p>
+						<h2 class="listing-item__title">{{ essay.title }}</h2>
+						<p class="listing-item__subtitle">{{ essay.date | date_to_long_string }}</p>
 					</div>
 				</div>
 
