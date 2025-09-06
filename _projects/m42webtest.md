@@ -12,8 +12,9 @@ Mach 42 is a research-driven trading technology firm, founded in 2019 to tackle 
 
 <div id="p5-container-2" style="width: 100%; height: auto; margin: 0 auto;">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
-  <script src="m42web_plot.js"></script>
+  <script src="js/m42web_plot.js"></script>
 </div>
+
 <br>
 
 
@@ -35,8 +36,9 @@ Through research, iteration, and responsible deployment we ensure that our syste
 
 <div id="p5-container" style="width: 100%; max-width: 800px; height: auto; margin: 0 auto;">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
-  <script src="mySketch.js"></script>
+  <script src="js/mySketch.js"></script>
 </div>
+
 <br>
 
 
