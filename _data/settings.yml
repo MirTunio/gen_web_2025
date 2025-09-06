@@ -8,12 +8,12 @@ header_settings:
 
 menu_settings:
   menu_items:
-    - title: 'Burning Daylight'
+    - title: 'Generative Art'
       url: '/'
     - title: 'Stories'
-      url: '/stories/' # change to fiction stories
+      url: '/stories/'
     - title: 'Essays'
-      url: '/essays/' # change to essays
+      url: '/essays/'
     - title: 'About'
       url: '/about'
     - title: 'Contact'

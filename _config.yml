@@ -13,9 +13,9 @@ collections:
   projects:
     output: true
     permalink: /project/:slug
-  stories:
+  writing:
     output: true
-    permalink: /stories/:title/
+    permalink: /writing/:title/
   essays:
     output: true
     permalink: /essays/:title/
