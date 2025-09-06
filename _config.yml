@@ -19,9 +19,6 @@ collections:
   essays:
     output: true
     permalink: /essays/:title/
-  genart:
-    output: true
-    permalink: /genart/:title/
 
 defaults:
   -
