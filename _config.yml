@@ -13,10 +13,10 @@ collections:
   projects:
     output: true
     permalink: /project/:slug
-  writing:
+  posts:
     output: true
     permalink: /writing/:title/
-  essays:
+  posts:
     output: true
     permalink: /essays/:title/
 
