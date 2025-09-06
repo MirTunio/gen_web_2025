@@ -9,7 +9,7 @@ header_settings:
 menu_settings:
   menu_items:
     - title: 'Generative Art'
-      url: '/'
+      url: '/genart'
     - title: 'Writing'
       url: '/writing'
     - title: 'Essays'
