@@ -13,6 +13,12 @@ collections:
   projects:
     output: true
     permalink: /project/:slug
+  stories:
+    output: true
+    permalink: /stories/:title/
+  essays:
+    output: true
+    permalink: /essays/:title/
 
 defaults:
   -
