@@ -14,8 +14,9 @@ ABCDEFG
 
 <div id="p5-container-2" style="width: 80%; height: auto; margin: 0 auto;">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
-  <script src="js/m42web_plot.js"></script>
+  <script src="js/m42web_plot.js" defer></script>
 </div>
+
 
 
 <br>
@@ -26,7 +27,7 @@ ABCDEFG
 
 <div id="p5-container" style="width: 100%; max-width: 800px; height: auto; margin: 0 auto;">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
-  <script src="{{ '/js/mySketch.js' | relative_url }}"></script>
+  <script src="{{ '/js/mySketch.js' | relative_url }}" defer></script>
 </div>
 
 <br>
