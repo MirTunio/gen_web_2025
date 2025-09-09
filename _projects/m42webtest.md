@@ -14,7 +14,7 @@ ABCDEFG
 
 <div id="p5-container-2" style="width: 80%; height: auto; margin: 0 auto;">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
-  <script src="js/m42web_plot.js" defer></script>
+  <script src={{ 'js/m42web_plot.js' | relative_url }} defer></script>
 </div>
 
 
