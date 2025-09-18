@@ -80,9 +80,22 @@
       color: #777;
     }
 
-    .title-link {
-      text-decoration: none;
-      color: #333;   /* matches body text color */
+    a.title-link {
+      text-decoration: none !important;
+      color: inherit;
+      transition: color 0.3s ease;
+    }
+
+    a.title-link:hover {
+      color: #666;
+    }
+
+    /* Grayed-out version (other pages) */
+    a.title-link.inactive {
+      text-decoration: none !important;
+      color: #aaa;         /* lighter gray */
+      pointer-events: none; /* not clickable */
+      cursor: default;      /* normal arrow, not a hand */
     }
 
     .fade-text {
@@ -95,7 +108,7 @@
 </head>
 <body>
   <header>
-    <h1><a href="index.html" class="fade-text">Burning Daylight</a></h1>
+    <h1><a class="title-link inactive" href="index.html">Burning Daylight</a></h1>
     <nav>
       <a href="index.html">genart</a>
       <a href="fiction.html">fiction</a>

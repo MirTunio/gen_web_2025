@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  
+
 <script>
   const base = document.createElement("base");
   if (window.location.hostname.includes("github.io")) {
@@ -73,9 +73,14 @@
       height: 400px;
     }
 
-    .title-link {
-      text-decoration: none;
-      color: #333;   /* matches body text color */
+    a.title-link {
+      text-decoration: none !important;  /* kill underline */
+      color: inherit;                    /* inherit parent text color */
+      transition: color 0.3s ease;
+    }
+
+    a.title-link:hover {
+      color: #666;  /* subtle hover effect */
     }
 
     footer {
@@ -88,7 +93,7 @@
 </head>
 <body>
   <header>
-    <h1><a href="index.html" class="title-link">Burning Daylight</a></h1>
+    <h1><a class="title-link" href="index.html">Burning Daylight</a></h1>
     <nav>
       <a href="index.html">genart</a>
       <a href="fiction.html">fiction</a>
