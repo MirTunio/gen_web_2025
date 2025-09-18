@@ -13,27 +13,27 @@
 <link rel="icon" href="assets/images/favicon.jpg" type="image/jpeg">
 
 <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Burning Daylight</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Burning Daylight</title>
 
 <style>
   /* Base styles */
   body {
     font-family: monospace;
-    font-size: 1em;        /* base size, e.g., 16px default */
+    font-size: 1em;        
     line-height: 1.6;
     background: #FAFAFA;
     color: #333;
-    max-width: 62.5em;     /* 1000px / 16px = 62.5em */
+    max-width: 62.5em;    
     margin: auto;
-    padding: 1.25em;       /* 20px / 16px = 1.25em */
+    padding: 1.25em;      
   }
 
   header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 2.5em;  /* 40px */
+    margin-bottom: 2.5em;  
   }
 
   header h1 {
@@ -43,7 +43,7 @@
 
   nav a {
     font-size: 1.1em;
-    margin-left: 1.25em;   /* 20px */
+    margin-left: 1.25em;   
     text-decoration: none;
     color: #333;
   }
@@ -52,19 +52,27 @@
     text-decoration: underline;
   }
 
-  /* Grid layout */
+  /* Hamburger button */
+  .nav-toggle {
+    display: none; /* hidden on desktop */
+    font-size: 1.5em;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(25em, 1fr)); /* 400px ≈ 25em */
-    gap: 2.5em;             /* 40px */
+    grid-template-columns: repeat(auto-fit, minmax(25em, 1fr)); 
+    gap: 2.5em;             
   }
 
   .sketch {
-    position: relative;     /* overlay positioning */
+    position: relative;     
   }
 
   .sketch h2 {
-    margin: 0 0 0.625em 0;  /* 10px */
+    margin: 0 0 0.625em 0;  
     font-size: 1.1em;
   }
 
@@ -80,8 +88,8 @@
   iframe {
     display: block;
     width: 100%;
-    height: 25em;           /* 400px */
-    border: 0.0625em solid #ccc;  /* 1px */
+    height: 25em;           
+    border: 0.0625em solid #ccc;  
   }
 
   .sketch a.overlay-link {
@@ -107,47 +115,70 @@
   }
 
   footer {
-    margin-top: 3.75em;      /* 60px */
+    margin-top: 3.75em;      
     font-size: 0.9em;
     text-align: center;
     color: #777;
   }
 
   /* Mobile responsive */
-  @media (max-width: 37.5em) { /* 600px / 16px */
-    body {
-      font-size: 1.125em;     /* scales all child ems */
-      line-height: 1.7;
-    }
-
-    .grid {
-      grid-template-columns: 1fr !important;
-      gap: 1.5em;             /* smaller spacing */
-    }
-
-    iframe {
-      height: 15.625em;       /* 250px / 16px */
-    }
-
-    header {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
-    nav a {
-      display: block;
-      margin: 0.3125em 0;     /* 5px */
-      font-size: 1.1em;       /* easier to tap */
-    }
+  /* Mobile responsive */
+@media (max-width: 37.5em) { /* 600px */
+  body {
+    font-size: 1.125em;    
+    line-height: 1.7;
   }
+
+  .grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5em;             
+  }
+
+  iframe {
+    height: 15.625em;       
+  }
+
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* Hamburger */
+  .nav-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 0.5em;
+    align-items: flex-end;  /* right justify links */
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links a {
+    display: block;
+    margin: 0.3125em 0;
+    font-size: 1.1em;
+    text-align: right;      /* text aligned right */
+  }
+}
 </style>
-
-
 </head>
+
 <body>
   <header>
     <h1><a class="title-link" href="index.html">Burning Daylight</a></h1>
-    <nav>
+
+    <!-- Hamburger button -->
+    <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+
+    <nav class="nav-links">
       <a href="index.html">genart</a>
       <a href="fiction.html">fiction</a>
       <a href="nonfiction.html">nonfiction</a>
@@ -156,7 +187,7 @@
     </nav>
   </header>
 
-  <h2><p>Latest work:</p></body></html></h2>
+  <h2><p>Latest work:</p></h2>
 
   <div class="grid">
     <div class="sketch">
@@ -187,5 +218,15 @@
   <footer>
     <p></p>
   </footer>
+
+  <script>
+    // Hamburger toggle
+    const toggle = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('.nav-links');
+
+    toggle.addEventListener('click', () => {
+      nav.classList.toggle('active');
+    });
+  </script>
 </body>
 </html>
