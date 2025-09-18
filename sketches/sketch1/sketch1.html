@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="/">
+  <meta charset="UTF-8">
+  <title>Burning Daylight</title>
+  <style>
+    body {
+      font-family: monospace;
+      background: #FAFAFA;
+      color: #333;
+      line-height: 1.6;
+      max-width: 1000px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.5em;
+    }
+
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #333;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 40px;
+    }
+
+    .sketch h2 {
+      margin: 0 0 10px 0;
+      font-size: 1.1em;
+    }
+
+    .sketch h2 a {
+      text-decoration: none;
+      color: #333;
+    }
+
+    .sketch h2 a:hover {
+      text-decoration: underline;
+    }
+
+    iframe {
+      border: 1px solid #ccc;
+      width: 100%;
+      height: 400px;
+    }
+
+    footer {
+      margin-top: 60px;
+      font-size: 0.9em;
+      text-align: center;
+      color: #777;
+    }
+
+    .fade-text {
+       opacity: 0.6;
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1 class="fade-text"><a href="/">Burning Daylight</a></h1>
+    <nav>
+      <a href="index.html">genart</a>
+      <a href="fiction.html">fiction</a>
+      <a href="nonfiction.html">nonfiction</a>
+      <a href="about.html">about</a>
+      <a href="contact.html">contact</a>
+    </nav>
+  </header>
+
+    <div class="sketch">
+      <h1>Goethe</h1>
+      <iframe src="sketches/sketch1/src/index.html"></iframe>
+    </div>
+
+  <footer>
+    <p></p>
+  </footer>
+</body>
+</html>
