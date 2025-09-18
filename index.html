@@ -1,8 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <base href="/gen_web_2025/">
-  <meta charset="UTF-8">
+  
+<script>
+  const base = document.createElement("base");
+  if (window.location.hostname.includes("github.io")) {
+    base.href = "/gen_web_2025/";  // deployed on GitHub Pages
+  } else {
+    base.href = "/";               // local testing
+  }
+  document.head.prepend(base);
+</script>
+
+<meta charset="UTF-8">
   <title>Burning Daylight</title>
   <style>
     body {
