@@ -47,12 +47,23 @@
       text-decoration: underline;
     }
 
+    /* Default: Desktop / wide screens */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
       gap: 40px;
     }
 
+    /* On small screens (below 600px), force single column */
+    @media (max-width: 600px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      iframe {
+        height: 250px; /* make iframes a bit smaller for mobile */
+      }
+    }
     .sketch h2 {
       margin: 0 0 10px 0;
       font-size: 1.1em;
@@ -89,7 +100,31 @@
       text-align: center;
       color: #777;
     }
-  </style>
+
+  .sketch {
+    position: relative; /* so overlay positions correctly */
+  }
+
+  .sketch a.overlay-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    text-indent: -9999px; /* hides text */
+    background: rgba(0,0,0,0); /* invisible */
+    cursor: pointer;
+  }
+
+  iframe {
+    border: 1px solid #ccc;
+    width: 100%;
+    height: 400px;
+    display: block;
+  }
+</style>
+
 </head>
 <body>
   <header>
@@ -109,21 +144,25 @@
     <div class="sketch">
       <h2><a href="sketches/sketch1/sketch1.html">Goethe</a></h2>
       <iframe src="sketches/sketch1/src/index.html"></iframe>
+      <a class="overlay-link" href="sketches/sketch1/sketch1.html">Goethe</a>
     </div>
 
     <div class="sketch">
       <h2><a href="sketches/sketch2/sketch2.html">Stars Like Projectors</a></h2>
       <iframe src="sketches/sketch2/src/index.html"></iframe>
+      <a class="overlay-link" href="sketches/sketch2/sketch2.html">Stars Like Projectors</a>
     </div>
-    
+
     <div class="sketch">
       <h2><a href="sketches/sketch3/sketch3.html">Tinnitus</a></h2>
       <iframe src="sketches/sketch3/src/index.html"></iframe>
+      <a class="overlay-link" href="sketches/sketch3/sketch3.html">Tinnitus</a>
     </div>
 
     <div class="sketch">
       <h2><a href="sketches/sketch4/sketch4.html">OpenProcessing embed try</a></h2>
       <iframe src="https://openprocessing.org/sketch/2554156/embed/?plusEmbedHash=d4829e84&userID=152317&show=sketch"></iframe>
+      <a class="overlay-link" href="sketches/sketch4/sketch4.html">OpenProcessing embed try</a>
     </div>
   </div>
 
