@@ -47,23 +47,24 @@
       text-decoration: underline;
     }
 
-    /* Default: Desktop / wide screens */
+    /* Desktop / default */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
       gap: 40px;
     }
 
-    /* On small screens (below 600px), force single column */
+    /* Force single column on small screens */
     @media (max-width: 600px) {
       .grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr !important; /* override desktop rule */
       }
 
       iframe {
-        height: 250px; /* make iframes a bit smaller for mobile */
+        height: 250px; /* smaller iframe for mobile */
       }
     }
+
     .sketch h2 {
       margin: 0 0 10px 0;
       font-size: 1.1em;
