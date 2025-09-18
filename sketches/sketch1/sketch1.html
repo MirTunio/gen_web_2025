@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  
   <script>
   const base = document.createElement("base");
   if (window.location.hostname.includes("github.io")) {
@@ -11,6 +10,7 @@
   }
   document.head.prepend(base);
 </script>
+<link rel="icon" href="assets/images/favicon.jpg" type="image/jpeg">
 
   <meta charset="UTF-8">
   <title>Burning Daylight</title>
@@ -94,6 +94,10 @@
     a.title-link.inactive {
       text-decoration: none !important;
       color: #aaa;         /* lighter gray */
+    }
+
+    a.title-link.inactive:hover {
+      color: #000000;
     }
 
     .fade-text {
