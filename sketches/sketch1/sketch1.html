@@ -13,133 +13,145 @@
 <link rel="icon" href="assets/images/favicon.jpg" type="image/jpeg">
 
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Burning Daylight</title>
-  <style>
+
+<style>
+  /* Base styles */
+  body {
+    font-family: monospace;
+    font-size: 1em;        /* base size, e.g., 16px default */
+    line-height: 1.6;
+    background: #FAFAFA;
+    color: #333;
+    max-width: 62.5em;     /* 1000px / 16px = 62.5em */
+    margin: auto;
+    padding: 1.25em;       /* 20px / 16px = 1.25em */
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.5em;  /* 40px */
+  }
+
+  header h1 {
+    font-size: 1.5em;
+    margin: 0;
+  }
+
+  nav a {
+    font-size: 1.1em;
+    margin-left: 1.25em;   /* 20px */
+    text-decoration: none;
+    color: #333;
+  }
+
+  nav a:hover {
+    text-decoration: underline;
+  }
+
+  /* Grid layout */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25em, 1fr)); /* 400px ≈ 25em */
+    gap: 2.5em;             /* 40px */
+  }
+
+  .sketch {
+    position: relative;     /* overlay positioning */
+  }
+
+  .sketch h2 {
+    margin: 0 0 0.625em 0;  /* 10px */
+    font-size: 1.1em;
+  }
+
+  .sketch h2 a {
+    text-decoration: none;
+    color: #333;
+  }
+
+  .sketch h2 a:hover {
+    text-decoration: underline;
+  }
+
+  iframe {
+    display: block;
+    width: 100%;
+    height: 25em;           /* 400px */
+    border: 0.0625em solid #ccc;  /* 1px */
+  }
+
+  .sketch a.overlay-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    text-indent: -9999px;
+    background: rgba(0,0,0,0);
+    cursor: pointer;
+  }
+
+  a.title-link {
+    text-decoration: none !important;
+    color: #000;
+    transition: color 0.3s ease;
+  }
+
+  a.title-link:hover {
+    color: #666;
+  }
+
+  footer {
+    margin-top: 3.75em;      /* 60px */
+    font-size: 0.9em;
+    text-align: center;
+    color: #777;
+  }
+
+  /* Mobile responsive */
+  @media (max-width: 37.5em) { /* 600px / 16px */
     body {
-      font-family: monospace;
-      background: #FAFAFA;
-      color: #333;
-      line-height: 1.6;
-      max-width: 1000px;
-      margin: auto;
-      padding: 20px;
-    }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 40px;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 1.5em;
-    }
-
-    nav a {
-      margin-left: 20px;
-      text-decoration: none;
-      color: #333;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
+      font-size: 1.125em;     /* scales all child ems */
+      line-height: 1.7;
     }
 
     .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-      gap: 40px;
-    }
-
-       /* Force single column on small screens */
-    @media (max-width: 600px) {
-      .grid {
-        grid-template-columns: 1fr !important; /* override desktop rule */
-      }
-
-      iframe {
-        height: 250px; /* smaller iframe for mobile */
-      }
-
-      /* stack nav vertically */
-      header {
-        font-size: 1.8em;
-        flex-direction: column;
-        align-items: flex-start; /* left-align nav links under title */
-      }
-
-      nav a {
-        display: block;
-        margin: 5px 0; /* spacing between links */
-        font-size: 1.1em; /* easier to tap */
-      }
-
-      body {
-        font-size: 18px;
-        line-height: 1.7;
-      }
-
-      .sketch h2 {
-        font-size: 1.3em;
-      }
-    }
-
-    .sketch h2 {
-      margin: 0 0 10px 0;
-      font-size: 1.1em;
-    }
-
-    .sketch h2 a {
-      text-decoration: none;
-      color: #333;
-    }
-
-    .sketch h2 a:hover {
-      text-decoration: underline;
+      grid-template-columns: 1fr !important;
+      gap: 1.5em;             /* smaller spacing */
     }
 
     iframe {
-      border: 1px solid #ccc;
-      width: 100%;
-      height: 400px;
+      height: 15.625em;       /* 250px / 16px */
     }
 
-    footer {
-      margin-top: 60px;
-      font-size: 0.9em;
-      text-align: center;
-      color: #777;
+    header {
+      flex-direction: column;
+      align-items: flex-start;
     }
 
-    a.title-link {
-      text-decoration: none !important;
-      color: inherit;
-      transition: color 0.3s ease;
+    nav a {
+      display: block;
+      margin: 0.3125em 0;     /* 5px */
+      font-size: 1.1em;       /* easier to tap */
     }
+  }
 
-    a.title-link:hover {
-      color: #666;
-    }
+  a.title-link.inactive {
+    text-decoration: none !important;
+    color: #aaa;         /* lighter gray */
+  }
 
-    /* Grayed-out version (other pages) */
-    a.title-link.inactive {
-      text-decoration: none !important;
-      color: #aaa;         /* lighter gray */
-    }
+  a.title-link.inactive:hover {
+    color: #000000;
+  }
+</style>
 
-    a.title-link.inactive:hover {
-      color: #000000;
-    }
 
-    .fade-text {
-       text-decoration: none;
-       color: #333;   /* matches body text color */
-       opacity: 0.6;
-    }
-
-  </style>
 </head>
 <body>
   <header>
@@ -152,11 +164,13 @@
       <a href="contact.html">contact</a>
     </nav>
   </header>
-
+  
+  <div class="grid">
     <div class="sketch">
       <h1>Goethe</h1>
       <iframe src="sketches/sketch1/src/index.html"></iframe>
     </div>
+  </div>
 
   <footer>
     <p></p>

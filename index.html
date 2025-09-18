@@ -15,118 +15,73 @@
 <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Burning Daylight</title>
-  <style>
-    body {
-      font-family: monospace;
-      background: #FAFAFA;
-      color: #333;
-      line-height: 1.6;
-      max-width: 1000px;
-      margin: auto;
-      padding: 20px;
-    }
 
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 40px;
-    }
+<style>
+  /* Base styles */
+  body {
+    font-family: monospace;
+    font-size: 1em;        /* base size, e.g., 16px default */
+    line-height: 1.6;
+    background: #FAFAFA;
+    color: #333;
+    max-width: 62.5em;     /* 1000px / 16px = 62.5em */
+    margin: auto;
+    padding: 1.25em;       /* 20px / 16px = 1.25em */
+  }
 
-    header h1 {
-      margin: 0;
-      font-size: 1.5em;
-    }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.5em;  /* 40px */
+  }
 
-    nav a {
-      margin-left: 20px;
-      text-decoration: none;
-      color: #333;
-    }
+  header h1 {
+    font-size: 1.5em;
+    margin: 0;
+  }
 
-    nav a:hover {
-      text-decoration: underline;
-    }
+  nav a {
+    font-size: 1.1em;
+    margin-left: 1.25em;   /* 20px */
+    text-decoration: none;
+    color: #333;
+  }
 
-    /* Desktop / default */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-      gap: 40px;
-    }
+  nav a:hover {
+    text-decoration: underline;
+  }
 
-    @media (max-width: 600px) {
-      .grid {
-        grid-template-columns: 1fr !important; /* override desktop rule */
-      }
-
-      iframe {
-        height: 250px; /* smaller iframe for mobile */
-      }
-
-      /* stack nav vertically */
-      header {
-        font-size: 1.8em;
-        flex-direction: column;
-        align-items: flex-start; /* left-align nav links under title */
-      }
-
-      nav a {
-        display: block;
-        margin: 5px 0; /* spacing between links */
-        font-size: 1.1em; /* easier to tap */
-      }
-
-      body {
-        font-size: 18px;
-        line-height: 1.7;
-      }
-
-      .sketch h2 {
-        font-size: 1.3em;
-      }
-    }
-
-
-    .sketch h2 {
-      margin: 0 0 10px 0;
-      font-size: 1.1em;
-    }
-
-    .sketch h2 a {
-      text-decoration: none;
-      color: #333;
-    }
-
-    .sketch h2 a:hover {
-      text-decoration: underline;
-    }
-
-    iframe {
-      border: 1px solid #ccc;
-      width: 100%;
-      height: 400px;
-    }
-
-    a.title-link {
-      text-decoration: none !important;  /* kill underline */
-      color: #000000;                    /* inherit parent text color */
-      transition: color 0.3s ease;
-    }
-
-    a.title-link:hover {
-      color: #666;  /* subtle hover effect */
-    }
-
-    footer {
-      margin-top: 60px;
-      font-size: 0.9em;
-      text-align: center;
-      color: #777;
-    }
+  /* Grid layout */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25em, 1fr)); /* 400px ≈ 25em */
+    gap: 2.5em;             /* 40px */
+  }
 
   .sketch {
-    position: relative; /* so overlay positions correctly */
+    position: relative;     /* overlay positioning */
+  }
+
+  .sketch h2 {
+    margin: 0 0 0.625em 0;  /* 10px */
+    font-size: 1.1em;
+  }
+
+  .sketch h2 a {
+    text-decoration: none;
+    color: #333;
+  }
+
+  .sketch h2 a:hover {
+    text-decoration: underline;
+  }
+
+  iframe {
+    display: block;
+    width: 100%;
+    height: 25em;           /* 400px */
+    border: 0.0625em solid #ccc;  /* 1px */
   }
 
   .sketch a.overlay-link {
@@ -136,18 +91,57 @@
     width: 100%;
     height: 100%;
     z-index: 2;
-    text-indent: -9999px; /* hides text */
-    background: rgba(0,0,0,0); /* invisible */
+    text-indent: -9999px;
+    background: rgba(0,0,0,0);
     cursor: pointer;
   }
 
-  iframe {
-    border: 1px solid #ccc;
-    width: 100%;
-    height: 400px;
-    display: block;
+  a.title-link {
+    text-decoration: none !important;
+    color: #000;
+    transition: color 0.3s ease;
+  }
+
+  a.title-link:hover {
+    color: #666;
+  }
+
+  footer {
+    margin-top: 3.75em;      /* 60px */
+    font-size: 0.9em;
+    text-align: center;
+    color: #777;
+  }
+
+  /* Mobile responsive */
+  @media (max-width: 37.5em) { /* 600px / 16px */
+    body {
+      font-size: 1.125em;     /* scales all child ems */
+      line-height: 1.7;
+    }
+
+    .grid {
+      grid-template-columns: 1fr !important;
+      gap: 1.5em;             /* smaller spacing */
+    }
+
+    iframe {
+      height: 15.625em;       /* 250px / 16px */
+    }
+
+    header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    nav a {
+      display: block;
+      margin: 0.3125em 0;     /* 5px */
+      font-size: 1.1em;       /* easier to tap */
+    }
   }
 </style>
+
 
 </head>
 <body>
