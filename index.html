@@ -55,7 +55,6 @@
       gap: 40px;
     }
 
-    /* Force single column on small screens */
     @media (max-width: 600px) {
       .grid {
         grid-template-columns: 1fr !important; /* override desktop rule */
@@ -67,6 +66,7 @@
 
       /* stack nav vertically */
       header {
+        font-size: 1.8em;
         flex-direction: column;
         align-items: flex-start; /* left-align nav links under title */
       }
@@ -74,8 +74,19 @@
       nav a {
         display: block;
         margin: 5px 0; /* spacing between links */
+        font-size: 1.1em; /* easier to tap */
+      }
+
+      body {
+        font-size: 18px;
+        line-height: 1.7;
+      }
+
+      .sketch h2 {
+        font-size: 1.3em;
       }
     }
+
 
     .sketch h2 {
       margin: 0 0 10px 0;
