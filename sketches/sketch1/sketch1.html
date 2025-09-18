@@ -53,6 +53,28 @@
       gap: 40px;
     }
 
+       /* Force single column on small screens */
+    @media (max-width: 600px) {
+      .grid {
+        grid-template-columns: 1fr !important; /* override desktop rule */
+      }
+
+      iframe {
+        height: 250px; /* smaller iframe for mobile */
+      }
+
+      /* stack nav vertically */
+      header {
+        flex-direction: column;
+        align-items: flex-start; /* left-align nav links under title */
+      }
+
+      nav a {
+        display: block;
+        margin: 5px 0; /* spacing between links */
+      }
+    }
+
     .sketch h2 {
       margin: 0 0 10px 0;
       font-size: 1.1em;
