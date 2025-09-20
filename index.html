@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <script>
+  // Base path setup (for local vs GitHub Pages)
   const base = document.createElement("base");
   if (window.location.hostname.includes("github.io")) {
     base.href = "/gen_web_2025/";  // deployed on GitHub Pages
@@ -24,9 +25,8 @@
     line-height: 1.6;
     background: #FAFAFA;
     color: #333;
-    max-width: 62.5em;    
-    margin: auto;
-    padding: 1.25em;      
+    margin: 0;
+    padding: 1.25em;
   }
 
   header {
@@ -39,6 +39,16 @@
   header h1 {
     font-size: 1.5em;
     margin: 0;
+  }
+
+  a.title-link {
+    text-decoration: none !important;
+    color: #000;
+    transition: color 0.3s ease;
+  }
+
+  a.title-link:hover {
+    color: #666;
   }
 
   nav a {
@@ -54,63 +64,59 @@
 
   /* Hamburger button */
   .nav-toggle {
-    display: none; /* hidden on desktop */
+    display: none;
     font-size: 1.5em;
     background: none;
     border: none;
     cursor: pointer;
   }
 
+  /* Grid layout */
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(25em, 1fr)); 
-    gap: 2.5em;             
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 2em;             
   }
 
-  .sketch {
-    position: relative;     
-  }
-
-  .sketch h2 {
-    margin: 0 0 0.625em 0;  
-    font-size: 1.1em;
-  }
-
-  .sketch h2 a {
-    text-decoration: none;
-    color: #333;
-  }
-
-  .sketch h2 a:hover {
-    text-decoration: underline;
-  }
-
-  iframe {
+  .card {
     display: block;
-    width: 100%;
-    height: 25em;           
-    border: 0.0625em solid #ccc;  
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease;
   }
 
-  .sketch a.overlay-link {
+  .card:hover {
+    transform: scale(1.02);
+  }
+
+  /* 16:9 thumbnail container */
+  .thumb {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  .thumb iframe {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 2;
-    text-indent: -9999px;
-    background: rgba(0,0,0,0);
-    cursor: pointer;
+    border: 0;
   }
 
-  a.title-link {
-    text-decoration: none !important;
-    color: #000;
-    transition: color 0.3s ease;
+  .title {
+    margin-top: 0.5em;
+    font-size: 1.1em;
+    font-weight: bold;
   }
 
-  a.title-link:hover {
+  .subtitle {
+    margin-top: 0.25em;
+    font-size: 0.9em;
     color: #666;
   }
 
@@ -122,52 +128,34 @@
   }
 
   /* Mobile responsive */
-  /* Mobile responsive */
-@media (max-width: 37.5em) { /* 600px */
-  body {
-    font-size: 1.125em;    
-    line-height: 1.7;
-  }
+  @media (max-width: 37.5em) {
+    .grid {
+      grid-template-columns: 1fr;
+      gap: 1.5em;
+    }
 
-  .grid {
-    grid-template-columns: 1fr !important;
-    gap: 1.5em;             
-  }
+    .nav-toggle {
+      display: block;
+    }
 
-  iframe {
-    height: 15.625em;       
-  }
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      margin-top: 0.5em;
+      align-items: flex-end;
+    }
 
-  header {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
+    .nav-links.active {
+      display: flex;
+    }
 
-  /* Hamburger */
-  .nav-toggle {
-    display: block;
+    .nav-links a {
+      margin: 0.3em 0;
+      font-size: 1.1em;
+      text-align: right;
+    }
   }
-
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    margin-top: 0.5em;
-    align-items: flex-end;  /* right justify links */
-  }
-
-  .nav-links.active {
-    display: flex;
-  }
-
-  .nav-links a {
-    display: block;
-    margin: 0.3125em 0;
-    font-size: 1.1em;
-    text-align: right;      /* text aligned right */
-  }
-}
 </style>
 </head>
 
@@ -187,32 +175,40 @@
     </nav>
   </header>
 
-  <h2><p>Latest work:</p></h2>
+  <h2>Latest work:</h2>
 
   <div class="grid">
-    <div class="sketch">
-      <h2><a href="sketches/sketch1/sketch1.html">Goethe</a></h2>
-      <iframe src="sketches/sketch1/src/index.html"></iframe>
-      <a class="overlay-link" href="sketches/sketch1/sketch1.html">Goethe</a>
-    </div>
+    <a href="sketches/sketch1/sketch1.html" class="card">
+      <div class="thumb">
+        <iframe src="sketches/sketch1/src/index.html"></iframe>
+      </div>
+      <div class="title">Goethe</div>
+      <div class="subtitle">Subtitle here</div>
+    </a>
 
-    <div class="sketch">
-      <h2><a href="sketches/sketch2/sketch2.html">Stars Like Projectors</a></h2>
-      <iframe src="sketches/sketch2/src/index.html"></iframe>
-      <a class="overlay-link" href="sketches/sketch2/sketch2.html">Stars Like Projectors</a>
-    </div>
+    <a href="sketches/sketch2/sketch2.html" class="card">
+      <div class="thumb">
+        <iframe src="sketches/sketch2/src/index.html"></iframe>
+      </div>
+      <div class="title">Stars Like Projectors</div>
+      <div class="subtitle">Subtitle here</div>
+    </a>
 
-    <div class="sketch">
-      <h2><a href="sketches/sketch3/sketch3.html">Tinnitus</a></h2>
-      <iframe src="sketches/sketch3/src/index.html"></iframe>
-      <a class="overlay-link" href="sketches/sketch3/sketch3.html">Tinnitus</a>
-    </div>
+    <a href="sketches/sketch3/sketch3.html" class="card">
+      <div class="thumb">
+        <iframe src="sketches/sketch3/src/index.html"></iframe>
+      </div>
+      <div class="title">Tinnitus</div>
+      <div class="subtitle">Subtitle here</div>
+    </a>
 
-    <div class="sketch">
-      <h2><a href="sketches/sketch4/sketch4.html">OpenProcessing embed try</a></h2>
-      <iframe src="https://openprocessing.org/sketch/2554156/embed/?plusEmbedHash=d4829e84&userID=152317&show=sketch"></iframe>
-      <a class="overlay-link" href="sketches/sketch4/sketch4.html">OpenProcessing embed try</a>
-    </div>
+    <a href="sketches/sketch4/sketch4.html" class="card">
+      <div class="thumb">
+        <iframe src="https://openprocessing.org/sketch/2554156/embed/?plusEmbedHash=d4829e84&userID=152317&show=sketch"></iframe>
+      </div>
+      <div class="title">OpenProcessing embed try</div>
+      <div class="subtitle">Subtitle here</div>
+    </a>
   </div>
 
   <footer>
@@ -223,7 +219,6 @@
     // Hamburger toggle
     const toggle = document.querySelector('.nav-toggle');
     const nav = document.querySelector('.nav-links');
-
     toggle.addEventListener('click', () => {
       nav.classList.toggle('active');
     });
