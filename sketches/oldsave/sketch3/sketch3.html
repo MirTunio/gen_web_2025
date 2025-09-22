@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- 
+    Base path setup (keeps links working both locally and on GitHub Pages).
+    ⚠️ Do not edit unless your deployment paths change. 
+  -->
+  <script>
+    const base = document.createElement("base");
+    if (window.location.hostname.includes("github.io")) {
+      base.href = "/gen_web_2025/";  // deployed on GitHub Pages
+    } else {
+      base.href = "/";               // local testing
+    }
+    document.head.prepend(base);
+  </script>
+
+  <!-- Page favicon (optional, replace with your own if desired) -->
+  <link rel="icon" href="assets/images/favicon.jpg" type="image/jpeg">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- 
+    ✅ CHANGE THIS: Page title (appears in browser tab).
+  -->
+  <title>Burning Daylight</title>
+
+  <style>
+    /* -------------------- 
+       Base Styles
+    -------------------- */
+    body {
+      font-family: monospace;
+      font-size: 1em;
+      line-height: 1.6;
+      background: #FAFAFA;
+      color: #333;
+      max-width: 62.5em;  /* ~1000px */
+      margin: auto;
+      padding: 1.25em;    /* ~20px */
+    }
+
+    /* -------------------- 
+       Header & Navigation
+    -------------------- */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1em;
+    }
+
+    header h1 {
+      font-size: 1.5em;
+      margin: 0;
+    }
+
+    a.title-link {
+      text-decoration: none;
+      color: #000;
+      transition: color 0.3s ease;
+    }
+    a.title-link:hover { color: #666; }
+
+    a.title-link.inactive { color: #aaa; }
+    a.title-link.inactive:hover { color: #000; }
+
+    nav a {
+      font-size: 1.1em;
+      margin-left: 1.25em;
+      text-decoration: none;
+      color: #333;
+    }
+    nav a:hover { text-decoration: underline; }
+
+    /* Hamburger button (hidden on desktop) */
+    .nav-toggle {
+      display: none;
+      font-size: 1.5em;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* -------------------- 
+       Layout Grid
+    -------------------- */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(25em, 1fr));
+      gap: 2.5em;
+    }
+
+    .sketch {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .sketch h1 {
+      margin: 0 0 0.625em 0;
+      font-size: 1.25em;
+      text-align: left;
+    }
+
+    /* -------------------- 
+       Iframe Container
+    -------------------- */
+    .iframe-container {
+      width: 85vmin;        /* 85% of the smaller viewport dimension */
+      aspect-ratio: 1 / 1;  /* keep square */
+      max-width: 85vw;
+      max-height: 85vh;
+      margin: 0 auto;       /* center horizontally */
+    }
+
+    .iframe-container iframe {
+      width: 100%;
+      height: 100%;
+      border: 0.0625em solid #ccc;
+    }
+
+    /* -------------------- 
+       Footer
+    -------------------- */
+    footer {
+      margin-top: 3.75em;
+      font-size: 0.9em;
+      text-align: center;
+      color: #777;
+    }
+
+    /* -------------------- 
+       Responsive (mobile)
+    -------------------- */
+    @media (max-width: 37.5em) { /* ~600px */
+      body {
+        font-size: 1.125em;
+        line-height: 1.7;
+      }
+
+      .grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5em;
+      }
+
+      .iframe-container {
+        width: 90vmin;      /* slightly larger on mobile */
+        aspect-ratio: 1 / 1;
+        margin: 0 auto;
+      }
+
+      /* Show hamburger on mobile */
+      .nav-toggle { display: block; }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 0.5em;
+        align-items: flex-end;
+      }
+
+      .nav-links.active { display: flex; }
+
+      .nav-links a {
+        display: block;
+        margin: 0.3125em 0;
+        font-size: 1.1em;
+        text-align: right;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <!-- 
+      ✅ CHANGE THIS: Header site title (and its link).
+    -->
+    <h1><a class="title-link inactive" href="index.html">Burning Daylight</a></h1>
+
+    <!-- Hamburger button (mobile only) -->
+    <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+
+    <!-- Site Navigation (edit links if needed) -->
+    <nav class="nav-links">
+      <a href="index.html">genart</a>
+      <a href="fiction.html">fiction</a>
+      <a href="nonfiction.html">nonfiction</a>
+      <a href="about.html">about</a>
+      <a href="contact.html">contact</a>
+    </nav>
+  </header>
+  
+  <div class="grid">
+    <div class="sketch">
+      <!-- 
+        ✅ CHANGE THIS: Title of the sketch/artwork.
+      -->
+      <h1>Goethe</h1>
+
+      <!-- 
+        ✅ CHANGE THIS: Iframe source for the sketch/artwork.
+      -->
+      <div class="iframe-container">
+        <iframe src="sketches/sketch1/src/index.html"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p></p> <!-- Optional footer text -->
+  </footer>
+  
+  <script>
+    // --------------------
+    // Mobile nav toggle
+    // --------------------
+    const toggle = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('.nav-links');
+
+    toggle.addEventListener('click', () => {
+      nav.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>

@@ -1,229 +1,341 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <!-- 
-    Base path setup (keeps links working both locally and on GitHub Pages).
-    ⚠️ Do not edit unless your deployment paths change. 
-  -->
-  <script>
-    const base = document.createElement("base");
-    if (window.location.hostname.includes("github.io")) {
-      base.href = "/gen_web_2025/";  // deployed on GitHub Pages
-    } else {
-      base.href = "/";               // local testing
-    }
-    document.head.prepend(base);
-  </script>
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <!-- Base path setup -->
+    <script>
+      const base = document.createElement("base");
+      if (window.location.hostname.includes("github.io")) {
+        base.href = "/gen_web_2025/";
+      } else {
+        base.href = "/";
+      }
+      document.head.prepend(base);
+    </script>
 
-  <!-- Page favicon (optional, replace with your own if desired) -->
-  <link rel="icon" href="assets/images/favicon.jpg" type="image/jpeg">
+    <link rel="icon" href="assets/images/favicon.jpg" type="image/jpeg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burning Daylight</title>
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- 
-    ✅ CHANGE THIS: Page title (appears in browser tab).
-  -->
-  <title>Burning Daylight</title>
-
-  <style>
-    /* -------------------- 
-       Base Styles
-    -------------------- */
-    body {
-      font-family: monospace;
-      font-size: 1em;
-      line-height: 1.6;
-      background: #FAFAFA;
-      color: #333;
-      max-width: 62.5em;  /* ~1000px */
-      margin: auto;
-      padding: 1.25em;    /* ~20px */
-    }
-
-    /* -------------------- 
-       Header & Navigation
-    -------------------- */
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1em;
-    }
-
-    header h1 {
-      font-size: 1.5em;
-      margin: 0;
-    }
-
-    a.title-link {
-      text-decoration: none;
-      color: #000;
-      transition: color 0.3s ease;
-    }
-    a.title-link:hover { color: #666; }
-
-    a.title-link.inactive { color: #aaa; }
-    a.title-link.inactive:hover { color: #000; }
-
-    nav a {
-      font-size: 1.1em;
-      margin-left: 1.25em;
-      text-decoration: none;
-      color: #333;
-    }
-    nav a:hover { text-decoration: underline; }
-
-    /* Hamburger button (hidden on desktop) */
-    .nav-toggle {
-      display: none;
-      font-size: 1.5em;
-      background: none;
-      border: none;
-      cursor: pointer;
-    }
-
-    /* -------------------- 
-       Layout Grid
-    -------------------- */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(25em, 1fr));
-      gap: 2.5em;
-    }
-
-    .sketch {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
-    .sketch h1 {
-      margin: 0 0 0.625em 0;
-      font-size: 1.25em;
-      text-align: left;
-    }
-
-    /* -------------------- 
-       Iframe Container
-    -------------------- */
-    .iframe-container {
-      width: 85vmin;        /* 85% of the smaller viewport dimension */
-      aspect-ratio: 1 / 1;  /* keep square */
-      max-width: 85vw;
-      max-height: 85vh;
-      margin: 0 auto;       /* center horizontally */
-    }
-
-    .iframe-container iframe {
-      width: 100%;
-      height: 100%;
-      border: 0.0625em solid #ccc;
-    }
-
-    /* -------------------- 
-       Footer
-    -------------------- */
-    footer {
-      margin-top: 3.75em;
-      font-size: 0.9em;
-      text-align: center;
-      color: #777;
-    }
-
-    /* -------------------- 
-       Responsive (mobile)
-    -------------------- */
-    @media (max-width: 37.5em) { /* ~600px */
+    <style>
       body {
-        font-size: 1.125em;
-        line-height: 1.7;
+        font-family: monospace;
+        font-size: 1.1em;
+        line-height: 1.6;
+        background: #FAFAFA;
+        color: #333;
+        max-width: 62.5em;
+        margin: auto;
+        padding: 1.25em;
       }
 
-      .grid {
-        grid-template-columns: 1fr !important;
-        gap: 1.5em;
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1em;
+      }
+      header h1 { font-size: 1.5em; margin: 0; }
+      a.title-link { text-decoration: none; color: #000; transition: color 0.3s ease; }
+      a.title-link:hover { color: #666; }
+      a.title-link.inactive { color: #aaa; }
+      a.title-link.inactive:hover { color: #000; }
+
+      a {
+        color: #000;              /* black text */
+        text-decoration: underline; /* always underlined */
+      }
+
+      a:hover, a:focus {
+        color: #666;              /* subtle change on hover */
+        text-decoration: underline;
+      }
+
+      nav a { font-size: 1.1em; margin-left: 1.25em; text-decoration: none; color: #333; }
+      nav a:hover { text-decoration: underline; }
+      .nav-toggle { display: none; font-size: 1.5em; background: none; border: none; cursor: pointer; }
+
+      .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(25em, 1fr)); gap: 2.5em; }
+      .sketch {
+        display: flex;
+        flex-direction: column;
+        align-items: center;   /* center non-text elements */
+      }
+
+      .sketch h1 {
+        margin: 0 0 0.625em 0;
+        font-size: 1.25em;
+        text-align: left;      /* sketch title stays left */
+        align-self: flex-start;
+      }
+
+      .subtitle {
+        margin: -0.5em 0 1em 0;  /* tighter to the title */
+        font-size: 0.95em;       /* smaller than title */
+        font-weight: normal;     /* lighter than title */
+        color: #666;             /* subtle gray tone */
+        text-align: left;
+        align-self: flex-start;
       }
 
       .iframe-container {
-        width: 90vmin;      /* slightly larger on mobile */
-        aspect-ratio: 1 / 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%; 
         margin: 0 auto;
       }
 
-      /* Show hamburger on mobile */
-      .nav-toggle { display: block; }
+      #iframe-wrapper {
+        width: 90vmin;   /* 90% of min(viewport width, height) */
+        height: 90vmin;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        background: transparent;
+      }
 
-      .nav-links {
-        display: none;
-        flex-direction: column;
+      #iframe-wrapper iframe {
+        border: none;
+        margin: 0;
+        padding: 0;
         width: 100%;
-        margin-top: 0.5em;
-        align-items: flex-end;
-      }
-
-      .nav-links.active { display: flex; }
-
-      .nav-links a {
+        height: 100%;
         display: block;
-        margin: 0.3125em 0;
-        font-size: 1.1em;
-        text-align: right;
+        box-sizing: border-box;
+        background: transparent;
       }
-    }
-  </style>
-</head>
 
-<body>
-  <header>
-    <!-- 
-      ✅ CHANGE THIS: Header site title (and its link).
-    -->
-    <h1><a class="title-link inactive" href="index.html">Burning Daylight</a></h1>
+      .writeup {
+        width: 100%;           /* let text span full line */
+        text-align: left;   /* fills the line neatly */
+      }
 
-    <!-- Hamburger button (mobile only) -->
-    <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+    .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(12em, 1fr));
+        gap: 1em;
+        margin-top: 2em;
+        justify-items: center; /* center thumbnails */
+      }
 
-    <!-- Site Navigation (edit links if needed) -->
-    <nav class="nav-links">
-      <a href="index.html">genart</a>
-      <a href="fiction.html">fiction</a>
-      <a href="nonfiction.html">nonfiction</a>
-      <a href="about.html">about</a>
-      <a href="contact.html">contact</a>
-    </nav>
-  </header>
-  
-  <div class="grid">
-    <div class="sketch">
-      <!-- 
-        ✅ CHANGE THIS: Title of the sketch/artwork.
-      -->
-      <h1>Goethe</h1>
+      .gallery img {
+        width: 100%;
+        height: auto;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+      }
+      .gallery img:hover { transform: scale(1.02); }
 
-      <!-- 
-        ✅ CHANGE THIS: Iframe source for the sketch/artwork.
-      -->
-      <div class="iframe-container">
-        <iframe src="sketches/sketch1/src/index.html"></iframe>
+      /* Lightbox */
+      .lightbox {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0; top: 0;
+        width: 100%; height: 100%;
+        background: rgba(0,0,0,0.85);
+        justify-content: center;
+        align-items: center;
+      }
+      .lightbox img {
+        max-width: 90%;
+        max-height: 90%;
+        border: none;          /* removed border */
+        border-radius: 0;      /* removed rounded corners */
+        box-shadow: none;      /* ensure no shadow */
+      }
+      .lightbox.active {
+        display: flex;
+      }
+      .lightbox-close {
+        position: absolute;
+        top: 1em;
+        right: 1em;
+        font-size: 2em;
+        color: #fff;
+        cursor: pointer;
+        font-weight: bold;
+      }
+
+      /* YouTube embed */
+      .video-container {
+        margin-top: 2em;
+        text-align: center;
+      }
+      .video-container iframe {
+        max-width: 100%;
+      }
+
+      footer {
+        margin-top: 3.75em;
+        font-size: 0.9em;
+        text-align: center;
+        color: #777;
+      }
+
+      @media (max-width: 37.5em) {
+        body { font-size: 1.125em; line-height: 1.7; }
+        .grid { grid-template-columns: 1fr !important; gap: 1.5em; }
+        .iframe-container { width: 90vmin; aspect-ratio: 1 / 1; margin: 0 auto; }
+        .nav-toggle { display: block; }
+        .nav-links { display: none; flex-direction: column; width: 100%; margin-top: 0.5em; align-items: flex-end; }
+        .nav-links.active { display: flex; }
+        .nav-links a { display: block; margin: 0.3125em 0; font-size: 1.1em; text-align: right; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1><a class="title-link inactive" href="index.html">Burning Daylight</a></h1>
+      <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+      <nav class="nav-links">
+        <a href="index.html">genart</a>
+        <a href="fiction.html">fiction</a>
+        <a href="nonfiction.html">nonfiction</a>
+        <a href="about.html">about</a>
+        <a href="contact.html">contact</a>
+      </nav>
+    </header>
+    
+    <div class="grid">
+      <div class="sketch">
+        <h1>Candy V2</h1>
+        <h2 class="subtitle">2012-09-02</h2>
+
+        <div class="writeup before">
+          <p>Exaggerated pixels meet bright colors. Exploring the line between the analog and the digital while traversing a <a href="https://en.wikipedia.org/wiki/Perlin_noise" target="_blank">Perlin-noise</a> field.
+          </p>
+        </div>
+
+        <!-- START: sketch display portion  -->
+    
+
+
+
+        <div class="writeup after">
+          <p></p>
+        </div>
+        <!-- END:  sketch display portion -->
+
+        <div class="gallery">
+          <img src="sketches/sketch1/gallery/00.webp" alt="Gallery image 1" onclick="openLightbox(this.src)">
+          <img src="sketches/sketch1/gallery/01.webp" alt="Gallery image 2" onclick="openLightbox(this.src)">
+        </div>
+
+        <!-- YouTube video -->
+        <div class="video-container">
+          <iframe width="560" height="315"
+            src="https://www.youtube.com/embed/R8VLGjuHof0"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen></iframe>
+        </div>
+
+        <div class="video-container">
+          <iframe width="560" height="315"
+            src="https://www.youtube.com/embed/FNGkxqCDwnQ"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen></iframe>
+        </div>
+        
+
       </div>
     </div>
-  </div>
 
-  <footer>
-    <p></p> <!-- Optional footer text -->
-  </footer>
-  
-  <script>
-    // --------------------
-    // Mobile nav toggle
-    // --------------------
-    const toggle = document.querySelector('.nav-toggle');
-    const nav = document.querySelector('.nav-links');
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+      <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+      <img id="lightbox-img" src="" alt="Expanded view">
+    </div>
 
-    toggle.addEventListener('click', () => {
-      nav.classList.toggle('active');
-    });
-  </script>
-</body>
-</html>
+    <footer><p></p></footer>
+    
+    <script>
+      const toggle = document.querySelector('.nav-toggle');
+      const nav = document.querySelector('.nav-links');
+      toggle.addEventListener('click', () => nav.classList.toggle('active'));
+
+      function openLightbox(src) {
+        document.getElementById('lightbox-img').src = src;
+        document.getElementById('lightbox').classList.add('active');
+      }
+      function closeLightbox() {
+        document.getElementById('lightbox').classList.remove('active');
+      }
+    </script>
+
+    <!-- Script specific to the iframe wrapper: sizes it to available viewport space and (if same-origin) centers the sketch content inside the iframe -->
+    <script>
+      (function(){
+        const header = document.querySelector('header');
+        const wrapper = document.getElementById('iframe-wrapper');
+        const iframe = document.getElementById('sketch-iframe');
+
+        function resizeWrapper(){
+          const headerRect = header ? header.getBoundingClientRect() : { bottom: 0, height: 0 };
+          // available: space below header to bottom of viewport
+          const paddingEst = 32; // small buffer for page padding/margins
+          const available = Math.max(300, window.innerHeight - headerRect.bottom - paddingEst);
+          // cap at 90vh to avoid covering everything
+          const final = Math.min(available, Math.round(window.innerHeight * 0.9));
+          wrapper.style.height = final + 'px';
+        }
+
+        function tryCenterIframeContent(){
+          try {
+            const doc = iframe.contentDocument || iframe.contentWindow.document;
+            if (!doc) return;
+
+            // Ensure full-height document and center its body contents
+            doc.documentElement.style.height = '100%';
+            doc.body.style.height = '100%';
+            doc.body.style.margin = '0';
+            doc.body.style.display = 'flex';
+            doc.body.style.justifyContent = 'center';
+            doc.body.style.alignItems = 'center';
+            doc.body.style.overflow = 'hidden';
+
+            // If there is a canvas, constrain it so it doesn't overflow the wrapper
+            const canvas = doc.querySelector('canvas');
+            if (canvas) {
+              // Allow the sketch to remain crisp if it sizes itself; otherwise limit visuals
+              canvas.style.maxWidth = '100%';
+              canvas.style.maxHeight = '100%';
+              canvas.style.width = 'auto';
+              canvas.style.height = 'auto';
+              canvas.style.display = 'block';
+            }
+          } catch (e) {
+            // likely cross-origin — silently ignore
+          }
+        }
+
+        // Recalculate on load/resize/orientation change
+        window.addEventListener('resize', resizeWrapper);
+        window.addEventListener('orientationchange', resizeWrapper);
+
+        // Try to center after the iframe loads
+        iframe.addEventListener('load', function(){
+          resizeWrapper();
+          tryCenterIframeContent();
+          // Try again shortly in case the sketch resizes itself after load
+          setTimeout(tryCenterIframeContent, 500);
+          setTimeout(tryCenterIframeContent, 1500);
+        });
+
+        // initial sizing
+        resizeWrapper();
+      })();
+    </script>
+  </body>
+  </html>
