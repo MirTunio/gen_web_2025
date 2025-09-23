@@ -17,6 +17,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Burning Daylight</title>
 
+    <!-- Prism CSS for styling -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+
+    <!-- Prism JS for syntax highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
+
+
     <style>
       body {
         font-family: monospace;
@@ -78,7 +86,7 @@
         align-self: flex-start;
       }
 
-           .iframe-container {
+      .iframe-container {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -216,6 +224,25 @@
         .nav-links.active { display: flex; }
         .nav-links a { display: block; margin: 0.3125em 0; font-size: 1.1em; text-align: right; }
       }
+
+      .code-pen {
+        width: 100%;              /* full container width */
+        max-width: 100%;          /* never exceed parent width */
+        overflow-x: auto;         /* scroll if line is extremely long */
+        background-color: #f5f5f5;
+        padding: 0.5em;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin: 1em 0;
+      }
+
+      .code-pen pre {
+        white-space: pre-wrap;    /* wrap long lines */
+        word-break: break-word;   /* break long words */
+        margin: 0;
+        font-family: monospace;
+        overflow: visible;        /* remove Prism overflow issues */
+      }
     </style>
   </head>
 
@@ -276,10 +303,57 @@
         </div>
         
 
-        
+        <hr class="hline">
 
-      </div>
-    </div>
+
+      <div class="code-pen">
+  <pre><code class="language-java">
+float x, y, dx, dy;
+int [] listx = new int[600/4];
+int [] listy = new int[902/4];
+
+void setup() {
+  size(600, 902); 
+  background(250);
+  dx = width/4; 
+  dy = height/4;
+  
+  for (int a = 0; a &lt; listx.length; a++) {
+    listx[a] = (a + 1) * 10;
+  }
+  for (int a = 0; a &lt; listx.length; a++) {
+    listx[a] = (a + 1) * 10;
+  }
+ 
+  shuffle(listx);
+  shuffle(listy);
+ 
+  stroke(0,10);
+}
+
+void draw() {
+  for(int i=0; i &lt; listx.length;i++){
+    for(int j=0; j &lt; listy.length;j++){
+      point(listx[i]+0.375*width,listy[j]+0.375*height);
+    }
+  }  
+  shuffle(listx);
+  shuffle(listy);
+}
+
+void shuffle(int[] value) {
+  int temp;
+  int pick;
+  for (int i=0; i &lt; value.length; i++){
+    pick  = (int)random(value.length); 
+    temp = value[i]; 
+    value[i] = pick; 
+    value[pick]= temp; 
+  }
+}
+  </code></pre>
+</div>
+
 
     <!-- Lightbox -->
     <div id="lightbox" class="lightbox">
