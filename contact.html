@@ -1,112 +1,277 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Burning Daylight</title>
-  <style>
-    body {
-      font-family: monospace;
-      background: #FAFAFA; /* medium.com white */
-      color: #333;
-      line-height: 1.6;
-      max-width: 1000px;
-      margin: auto;
-      padding: 20px;
-    }
+<script>
+  // Base path setup (for local vs GitHub Pages)
+  const base = document.createElement("base");
+  if (window.location.hostname.includes("github.io")) {
+    base.href = "/gen_web_2025/";  // deployed on GitHub Pages
+  } else {
+    base.href = "/";               // local testing
+  }
+  document.head.prepend(base);
+</script>
+<link rel="icon" href="assets/images/favicon.jpg" type="image/jpeg">
 
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 40px;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Burning Daylight</title>
 
-    header h1 {
-      margin: 0;
-      font-size: 1.5em;
-    }
+<style>
+  /* Base styles */
+  body {
+    font-family: monospace;
+    font-size: 1em;        
+    line-height: 1.6;
+    background: #FAFAFA;
+    color: #333;
+    margin: 0;
+    padding: 1.25em;
+  }
 
-    nav a {
-      margin-left: 20px;
-      text-decoration: none;
-      color: #333;
-    }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.5em;  
+  }
 
-    nav a:hover {
-      text-decoration: underline;
-    }
+  header h1 {
+    font-size: 1.5em;
+    margin: 0;
+  }
 
+  a.title-link {
+    text-decoration: none !important;
+    color: #000;
+    transition: color 0.3s ease;
+  }
+
+  a.title-link:hover {
+    color: #666;
+  }
+
+  nav a {
+    font-size: 1.1em;
+    margin-left: 1.25em;   
+    text-decoration: none;
+    color: #333;
+  }
+
+  nav a:hover {
+    text-decoration: underline;
+  }
+
+  /* Hamburger button */
+  .nav-toggle {
+    display: none;
+    font-size: 1.5em;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  /* Grid layout */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 2em;             
+  }
+
+  .card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease;
+  }
+
+  .card:hover {
+    transform: scale(1.02);
+  }
+
+  /* 16:9 thumbnail container */
+  .thumb {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  .thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .title {
+    margin-top: 0.5em;
+    font-size: 1.1em;
+    font-weight: bold;
+  }
+
+  .subtitle {
+    margin-top: 0.25em;
+    font-size: 0.9em;
+    color: #666;
+  }
+
+  footer {
+    margin-top: 3.75em;      
+    font-size: 0.9em;
+    text-align: center;
+    color: #777;
+  }
+
+  /* Mobile responsive */
+  @media (max-width: 37.5em) {
     .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-      gap: 40px;
+      grid-template-columns: 1fr;
+      gap: 1.5em;
     }
 
-    .sketch h2 {
-      margin: 0 0 10px 0;
-      font-size: 1.1em;
+    .nav-toggle {
+      display: block;
     }
 
-    .sketch h2 a {
-      text-decoration: none;
-      color: #333;
-    }
-
-    .sketch h2 a:hover {
-      text-decoration: underline;
-    }
-
-    iframe {
-      border: 1px solid #ccc;
+    .nav-links {
+      display: none;
+      flex-direction: column;
       width: 100%;
-      height: 400px;
+      margin-top: 0.5em;
+      align-items: flex-end;
     }
 
-    footer {
-      margin-top: 60px;
-      font-size: 0.9em;
-      text-align: center;
-      color: #777;
+    .nav-links.active {
+      display: flex;
     }
-  </style>
+
+    .nav-links a {
+      margin: 0.3em 0;
+      font-size: 1.1em;
+      text-align: right;
+    }
+  }
+</style>
 </head>
+
 <body>
   <header>
-    <h1>Burning Daylight</h1>
-    <nav>
+    <h1><a class="title-link" href="index.html">Burning Daylight</a></h1>
+
+    <!-- Hamburger button -->
+    <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+
+    <nav class="nav-links">
       <a href="index.html">genart</a>
       <a href="fiction.html">fiction</a>
       <a href="nonfiction.html">nonfiction</a>
+      <a href="about.html">about</a>
       <a href="contact.html">contact</a>
     </nav>
   </header>
 
-  <p>Latest work:</p>
+  <h2>Latest work:</h2>
 
   <div class="grid">
-    <div class="sketch">
-      <h2><a href="sketch_pages/sketch1.html">Goethe</a></h2>
-      <iframe src="sketch_src/sketch1/index.html"></iframe>
-    </div>
+    <!-- ADD NEW SKETCH HERE -->
 
-    <div class="sketch">
-      <h2><a href="sketch2.html">Stars Like Projectors</a></h2>
-      <iframe src="sketch_src/sketch2/index.html"></iframe>
-    </div>
+    <a href="sketches/sketch8/sketch8.html" class="card">
+      <div class="thumb">
+        <img src="sketches/sketch8/src/thumb.webp" alt="binary">
+      </div>
+      <div class="title">Binary</div>
+      <div class="subtitle">2018-12-13</div>
+    </a>
+
+    <a href="sketches/sketch7/sketch7.html" class="card">
+      <div class="thumb">
+        <img src="sketches/sketch7/src/thumb.webp" alt="breathe">
+      </div>
+      <div class="title">Alias Flow</div>
+      <div class="subtitle">Aliasing opens the door to another dimension… 2018-12-12</div>
+    </a>
+
+    <a href="sketches/sketch6/sketch6.html" class="card">
+      <div class="thumb">
+        <img src="sketches/sketch6/src/thumb.webp" alt="breathe">
+      </div>
+      <div class="title">Breathe</div>
+      <div class="subtitle">2014</div>
+    </a>
+
+    <a href="sketches/sketch5/sketch5.html" class="card">
+      <div class="thumb">
+        <img src="sketches/sketch5/src/thumb.png" alt="conf2">
+      </div>
+      <div class="title">Confusion 2</div>
+      <div class="subtitle">2014</div>
+    </a>
+
+    <a href="sketches/sketch4/sketch4.html" class="card">
+      <div class="thumb">
+        <img src="sketches/sketch4/src/thumb.webp" alt="conf1">
+      </div>
+      <div class="title">Confusion 1</div>
+      <div class="subtitle">2014</div>
+    </a>
+
+    <a href="sketches/sketch3/sketch3.html" class="card">
+      <div class="thumb">
+        <img src="sketches/sketch3/src/thumb.webp" alt="escher">
+      </div>
+      <div class="title">Escher 1</div>
+      <div class="subtitle">2013-01-03</div>
+    </a>
     
-    <div class="sketch">
-      <h2><a href="sketch3.html">Tinnitus</a></h2>
-      <iframe src="sketch_src/sketch3/index.html"></iframe>
-    </div>
+    <a href="sketches/sketch2/sketch2.html" class="card">
+      <div class="thumb">
+        <img src="sketches/sketch2/src/thumb.webp" alt="candy v3">
+      </div>
+      <div class="title">Candy V3</div>
+      <div class="subtitle">2012-10-07</div>
+    </a>
 
-    <div class="sketch">
-      <h2><a href="sketch4.html">OpenProcessing embed try</a></h2>
-      <iframe src="https://openprocessing.org/sketch/2554156/embed/?plusEmbedHash=d4829e84&userID=152317&show=sketch"></iframe>
-    </div>
+    <a href="sketches/sketch1/sketch1.html" class="card">
+      <div class="thumb">
+        <img src="sketches/sketch1/src/thumb.webp" alt="candy v2">
+      </div>
+      <div class="title">Candy V2</div>
+      <div class="subtitle">2012-09-02</div>
+    </a>
+
+    <a href="sketches/sketch0/sketch0.html" class="card">
+      <div class="thumb">
+        <img src="sketches/sketch0/src/thumb.webp" alt="rawstroke">
+      </div>
+      <div class="title">Raw Stroke</div>
+      <div class="subtitle">2017-12-07</div>
+    </a>
+
+    
+    <a href="sketches/_template/sketch0.html" class="card">
+      <div class="thumb">
+        <img src="sketches/_template/src/thumb.webp" alt="Template thumb">
+      </div>
+      <div class="title">TEMPLATE Raw Stroke</div>
+      <div class="subtitle">2017-12-07</div>
+    </a>
+
   </div>
 
   <footer>
-    <p>© 2025 Burning Daylight</p>
+    <p></p>
   </footer>
+
+  <script>
+    // Hamburger toggle
+    const toggle = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('.nav-links');
+    toggle.addEventListener('click', () => {
+      nav.classList.toggle('active');
+    });
+  </script>
 </body>
 </html>

@@ -22,7 +22,7 @@
         font-family: monospace;
         font-size: 1.1em;
         line-height: 1.6;
-        background: #FAFAFA;
+        background: #f1b6b6;
         color: #333;
         max-width: 62.5em;
         margin: auto;
@@ -56,6 +56,7 @@
       .nav-toggle { display: none; font-size: 1.5em; background: none; border: none; cursor: pointer; }
 
       .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(25em, 1fr)); gap: 2.5em; }
+      
       .sketch {
         display: flex;
         flex-direction: column;
@@ -112,7 +113,7 @@
         text-align: left;   /* fills the line neatly */
       }
 
-    .gallery {
+     .gallery {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(12em, 1fr));
         gap: 1em;
@@ -192,7 +193,7 @@
         border: 0;              /* remove default border */
         height: 0.5px;            /* line thickness */
         background-color: #333; /* dark gray line */
-        margin: 5em;          /* spacing above/below */
+        margin: 5em 0;          /* spacing above/below */
       }      
 
       footer {
@@ -201,6 +202,69 @@
         text-align: center;
         color: #777;
       }
+
+/* container sticks to parent width */
+.code-pen {
+  width: 100%;
+  max-width: 100%;
+  align-self: stretch;
+  box-sizing: border-box;
+  border-radius: 4px;
+  overflow: hidden; /* border aesthetics only, not scrolling */
+}
+
+/* pre behaves like a textbox */
+.code-pen pre {
+  margin: 0;
+  padding: 0.75rem 1rem;  
+  white-space: pre;            /* preserve line breaks, no wrapping */
+  overflow-x: auto;            /* horizontal scrolling if needed */
+  overflow-y: hidden;          /* no vertical overflow */
+  -webkit-overflow-scrolling: touch;
+  box-sizing: border-box;
+  display: block;
+  width: 100%;                 /* lock to container width */
+  max-width: 100%;             /* never exceed column/page */
+  font-family: inherit;
+  font-size: 0.95rem;
+}
+
+/* ensure <code> follows same rules */
+.code-pen code {
+  display: block;
+  white-space: pre;            /* match pre */
+  width: max-content;          /* let lines decide scrolling width */
+  min-width: 100%;             /* but never smaller than container */
+}
+
+    .inline-images {
+      display: flex;
+      flex-direction: column;
+      gap: 2em;
+      margin: 3em 0;
+      align-items: center;
+    }
+
+    .inline-images figure {
+      margin: 0;
+      text-align: center;
+    }
+
+    .inline-images img {
+      width: 90vmin;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      border-radius: 4px;
+      cursor: pointer; /* make zoomable */
+    }
+
+    .inline-images figcaption {
+      margin-top: 0.5em;
+      font-size: 0.95em;
+      color: #555;
+    }
+
 
       @media (max-width: 37.5em) {
         body { font-size: 1.125em; line-height: 1.7; }
@@ -229,61 +293,61 @@
     
     <div class="grid">
       <div class="sketch">
-        <h1>Raw Stroke</h1>
-        <h2 class="subtitle">2017-12-07</h2>
+        <h1>Binary</h1>
+        <h2 class="subtitle">2018-12-13</h2>
 
         <div class="writeup before">
           <p>
-          Attempting to programmatically capture a vigorous, emotional, brush stroke. Question: how close can computers get to simulating human-like artistic expression? 
-          The code and animation is hosted at: <a href="https://www.openprocessing.org/sketch/485178" target="_blank">https://www.openprocessing.org/sketch/485178</a> however the frame rate and resolution of the animation may be considerably lower than intended.
-        </p>
+            Why the binary?
+          </p>
         </div>
-
+        
         <!-- START: sketch display portion  -->
         <div class="iframe-container">
           <div id="iframe-wrapper">
             <iframe id="sketch-iframe"
-                    src="sketches/sketch0/src/index.html"
+                    src="sketches/sketch8/src/index.html"
                     scrolling="no"
                     allowfullscreen
-                    title="Raw Stroke sketch"></iframe>
+                    title="Binary sketch"></iframe>
           </div>
         </div>
 
         <hr class="hline">
 
-        <div class="writeup after">
-          <p></p>
-        </div>
         <!-- END:  sketch display portion -->
 
-        <div class="gallery">
-          <img src="sketches/sketch0/gallery/00.webp" alt="Gallery image 1" onclick="openLightbox(this.src)">
-          <img src="sketches/sketch0/gallery/01.webp" alt="Gallery image 2" onclick="openLightbox(this.src)">
-          <img src="sketches/sketch0/gallery/02.webp" alt="Gallery image 3" onclick="openLightbox(this.src)">
-        </div>
+      <div class="gallery">
+        <img src="sketches/sketch8/gallery/00.webp" alt="Gallery image 1" onclick="openLightbox(this.src)">
+        <img src="sketches/sketch8/gallery/01.webp" alt="Gallery image 2" onclick="openLightbox(this.src)">
+        <img src="sketches/sketch8/gallery/02.webp" alt="Gallery image 3" onclick="openLightbox(this.src)">
+        <img src="sketches/sketch8/gallery/03.webp" alt="Gallery image 4" onclick="openLightbox(this.src)">
+        <img src="sketches/sketch8/gallery/04.webp" alt="Gallery image 5" onclick="openLightbox(this.src)">
+        <img src="sketches/sketch8/gallery/05.webp" alt="Gallery image 6" onclick="openLightbox(this.src)">
+        <img src="sketches/sketch8/gallery/06.webp" alt="Gallery image 7" onclick="openLightbox(this.src)">
+        <img src="sketches/sketch8/gallery/07.webp" alt="Gallery image 8" onclick="openLightbox(this.src)">
+        <img src="sketches/sketch8/gallery/08.webp" alt="Gallery image 9" onclick="openLightbox(this.src)">
+        <img src="sketches/sketch8/gallery/09.webp" alt="Gallery image 10" onclick="openLightbox(this.src)">
+        <img src="sketches/sketch8/gallery/10.webp" alt="Gallery image 11" onclick="openLightbox(this.src)">
+        <img src="sketches/sketch8/gallery/11.webp" alt="Gallery image 12" onclick="openLightbox(this.src)">
+        <img src="sketches/sketch8/gallery/12.webp" alt="Gallery image 13" onclick="openLightbox(this.src)">
+        <img src="sketches/sketch8/gallery/13.webp" alt="Gallery image 14" onclick="openLightbox(this.src)">
+        <img src="sketches/sketch8/gallery/14.webp" alt="Gallery image 15" onclick="openLightbox(this.src)">
+        <img src="sketches/sketch8/gallery/15.webp" alt="Gallery image 16" onclick="openLightbox(this.src)">
+        <img src="sketches/sketch8/gallery/16.webp" alt="Gallery image 17" onclick="openLightbox(this.src)">
+        <img src="sketches/sketch8/gallery/17.webp" alt="Gallery image 18" onclick="openLightbox(this.src)">
+      </div>
 
-        <!-- YouTube video -->
-        <div class="video-container">
-          <iframe width="560" height="315"
-            src="https://www.youtube.com/embed/NLWzpavP_AQ"
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen></iframe>
-        </div>
+      <hr class="hline">
 
-        <div class="video-container">
-          <iframe width="560" height="315"
-            src="https://www.youtube.com/embed/ZhQ4c4qrBJM"
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen></iframe>
-        </div>
-        
+      <div class="inline-images">
+        <figure>
+          <img src="sketches/sketch8/gallery/code.png" alt="Alias Flow still 1">
+          <figcaption>code</figcaption>
+        </figure>
+      </div>
+
+ 
 
       </div>
     </div>
