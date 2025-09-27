@@ -327,38 +327,44 @@
     <footer><p></p></footer>
     
     <script>
-      const galleryImages = Array.from(document.querySelectorAll('.gallery img'));
-      let currentIndex = 0;
+  // Select both gallery and inline images
+  const allImages = Array.from(document.querySelectorAll('.gallery img, .inline-images img'));
+  let currentIndex = 0;
 
-      function openLightbox(src) {
-        currentIndex = galleryImages.findIndex(img => img.src === src);
-        document.getElementById('lightbox-img').src = src;
-        document.getElementById('lightbox').classList.add('active');
-      }
+  function openLightbox(src) {
+    currentIndex = allImages.findIndex(img => img.src === src);
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').classList.add('active');
+  }
 
-      function closeLightbox() {
-        document.getElementById('lightbox').classList.remove('active');
-      }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+  }
 
-      function nextImage() {
-        currentIndex = (currentIndex + 1) % galleryImages.length;
-        document.getElementById('lightbox-img').src = galleryImages[currentIndex].src;
-      }
+  function nextImage() {
+    currentIndex = (currentIndex + 1) % allImages.length;
+    document.getElementById('lightbox-img').src = allImages[currentIndex].src;
+  }
 
-      function prevImage() {
-        currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
-        document.getElementById('lightbox-img').src = galleryImages[currentIndex].src;
-      }
+  function prevImage() {
+    currentIndex = (currentIndex - 1 + allImages.length) % allImages.length;
+    document.getElementById('lightbox-img').src = allImages[currentIndex].src;
+  }
 
-      // Close lightbox on Escape key
-      document.addEventListener('keydown', (e) => {
-        const lightbox = document.getElementById('lightbox');
-        if (!lightbox.classList.contains('active')) return;
-        if (e.key === "Escape") closeLightbox();
-        if (e.key === "ArrowRight") nextImage();
-        if (e.key === "ArrowLeft") prevImage();
-      });
-    </script>
+  // Attach click events to all images
+  allImages.forEach(img => {
+    img.addEventListener('click', () => openLightbox(img.src));
+  });
+
+  // Close lightbox on Escape key
+  document.addEventListener('keydown', (e) => {
+    const lightbox = document.getElementById('lightbox');
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === "Escape") closeLightbox();
+    if (e.key === "ArrowRight") nextImage();
+    if (e.key === "ArrowLeft") prevImage();
+  });
+</script>
 
 
     <!-- Script specific to the iframe wrapper: sizes it to available viewport space and (if same-origin) centers the sketch content inside the iframe -->
