@@ -24,7 +24,7 @@
         line-height: 1.6;
         background: #FAFAFA;
         color: #333;
-        max-width: 62.5em;
+        max-width: 80em;
         margin: auto;
         padding: 1.25em;
       }
@@ -110,11 +110,12 @@
       .writeup {
         width: 100%;           /* let text span full line */
         text-align: left;   /* fills the line neatly */
+        max-width: 50em;
       }
 
     .gallery {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(12em, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(24em, 1fr));
         gap: 1em;
         margin-top: 2em;
         justify-items: center; /* center thumbnails */
@@ -180,26 +181,38 @@
 
       /* YouTube embed */
       .video-container {
-        margin-top: 2em;
-        text-align: center;
+        position: relative;
+        width: 100%;          /* take full width of parent */
+        max-width: 100%;      /* ensure it doesn't shrink */
+        padding-bottom: 56.25%; /* 16:9 ratio */
+        height: 0;
+        overflow: hidden;
+        margin: 2em 0;
       }
+
       .video-container iframe {
-        max-width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;          /* stretch to container */
+        height: 100%;         /* stretch to container */
+        border: 0;
       }
+
 
       .hline {
         width: 100%;            /* full width of container */
         border: 0;              /* remove default border */
         height: 0.5px;            /* line thickness */
         background-color: #333; /* dark gray line */
-        margin: 5em;          /* spacing above/below */
+        margin: 2em;          /* spacing above/below */
       }      
 
       .inline-images {
         display: flex;
         flex-direction: column;
-        gap: 2em;
-        margin: 3em 0;
+        gap: 1em;
+        margin: 1em 0;
         align-items: center;
       }
 
@@ -209,7 +222,7 @@
       }
 
       .inline-images img {
-        width: 90vmin;
+        width: 100vmin;
         height: auto;
         display: block;
         margin: 0 auto;
@@ -257,76 +270,42 @@
     
     <div class="grid">
       <div class="sketch">
-        <h1>Raw Stroke</h1>
-        <h2 class="subtitle">2017-12-07</h2>
+        <h1>Bifurcation</h1>
+        <h2 class="subtitle">2022-06-08</h2>
+
+        <div class="writeup before">
+          <p>
+            You may be able to choose where you want to be in three dimensions, and perhaps, how fast you want to get there. But what about time? It’s a one way street, you just drift on through, and watch the infinite stream of bifurcations pass by.
+          </p>
+        </div>
+
+        <div class="video-container">
+          <iframe
+            src="https://player.vimeo.com/video/719328656?badge=0&autopause=0&player_id=0&app_id=58479" 
+            allow="autoplay; fullscreen; picture-in-picture" 
+            allowfullscreen 
+            title="bifurcation.avi">
+          </iframe>
+        </div>        
+
+        <div class="gallery">
+          <img src="sketches/sketch20/gallery/00.webp" alt="Gallery image 1" onclick="openLightbox(this.src)">
+          <img src="sketches/sketch20/gallery/01.webp" alt="Gallery image 2" onclick="openLightbox(this.src)">
+          <img src="sketches/sketch20/gallery/02.webp" alt="Gallery image 3" onclick="openLightbox(this.src)">
+        </div>
 
         <div class="inline-images">
           <figure>
-            <img src="sketches/sketch7/gallery/00.webp" alt="Alias Flow still 1">
-            <figcaption>Still 1</figcaption>
-          </figure>
-
-          <figure>
-            <img src="sketches/sketch7/gallery/01.webp" alt="Alias Flow still 2">
-            <figcaption>Still 2</figcaption>
-          </figure>
-
-          <figure>
-            <img src="sketches/sketch7/gallery/02.webp" alt="Alias Flow still 3">
-            <figcaption>Still 3</figcaption>
+            <img src="sketches/sketch20/gallery/03.webp" alt="01">
           </figure>
         </div>
 
         <div class="writeup before">
           <p>
-          Attempting to programmatically capture a vigorous, emotional, brush stroke. Question: how close can computers get to simulating human-like artistic expression? 
-          The code and animation is hosted at: <a href="https://www.openprocessing.org/sketch/485178" target="_blank">https://www.openprocessing.org/sketch/485178</a> however the frame rate and resolution of the animation may be considerably lower than intended.
-        </p>
-        </div>
+            One of the tragedies of human experience is that we can only pick one path into the future.
 
-        <!-- START: sketch display portion  -->
-        <div class="iframe-container">
-          <div id="iframe-wrapper">
-            <iframe id="sketch-iframe"
-                    src="sketches/sketch0/src/index.html"
-                    scrolling="no"
-                    allowfullscreen
-                    title="Raw Stroke sketch"></iframe>
-          </div>
-        </div>
-
-        <hr class="hline">
-
-        <div class="writeup after">
-          <p></p>
-        </div>
-        <!-- END:  sketch display portion -->
-
-        <div class="gallery">
-          <img src="sketches/sketch0/gallery/00.webp" alt="Gallery image 1" onclick="openLightbox(this.src)">
-          <img src="sketches/sketch0/gallery/01.webp" alt="Gallery image 2" onclick="openLightbox(this.src)">
-          <img src="sketches/sketch0/gallery/02.webp" alt="Gallery image 3" onclick="openLightbox(this.src)">
-        </div>
-
-        <!-- YouTube video -->
-        <div class="video-container">
-          <iframe width="560" height="315"
-            src="https://www.youtube.com/embed/NLWzpavP_AQ"
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen></iframe>
-        </div>
-
-        <div class="video-container">
-          <iframe width="560" height="315"
-            src="https://www.youtube.com/embed/ZhQ4c4qrBJM"
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen></iframe>
+            I grieve my orphaned parallel universes.
+          </p>
         </div>
         
 

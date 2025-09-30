@@ -24,7 +24,7 @@
         line-height: 1.6;
         background: #FAFAFA;
         color: #333;
-        max-width: 62.5em;
+        max-width: 80em;
         margin: auto;
         padding: 1.25em;
       }
@@ -110,11 +110,12 @@
       .writeup {
         width: 100%;           /* let text span full line */
         text-align: left;   /* fills the line neatly */
+        max-width: 50em;
       }
 
     .gallery {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(12em, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(24em, 1fr));
         gap: 1em;
         margin-top: 2em;
         justify-items: center; /* center thumbnails */
@@ -180,26 +181,38 @@
 
       /* YouTube embed */
       .video-container {
-        margin-top: 2em;
-        text-align: center;
+        position: relative;
+        width: 100%;          /* take full width of parent */
+        max-width: 100%;      /* ensure it doesn't shrink */
+        padding-bottom: 56.25%; /* 16:9 ratio */
+        height: 0;
+        overflow: hidden;
+        margin: 2em 0;
       }
+
       .video-container iframe {
-        max-width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;          /* stretch to container */
+        height: 100%;         /* stretch to container */
+        border: 0;
       }
+
 
       .hline {
         width: 100%;            /* full width of container */
         border: 0;              /* remove default border */
         height: 0.5px;            /* line thickness */
         background-color: #333; /* dark gray line */
-        margin: 5em;          /* spacing above/below */
+        margin: 2em;          /* spacing above/below */
       }      
 
       .inline-images {
         display: flex;
         flex-direction: column;
-        gap: 2em;
-        margin: 3em 0;
+        gap: 1em;
+        margin: 1em 0;
         align-items: center;
       }
 
@@ -209,7 +222,7 @@
       }
 
       .inline-images img {
-        width: 90vmin;
+        width: 100vmin;
         height: auto;
         display: block;
         margin: 0 auto;
@@ -257,78 +270,114 @@
     
     <div class="grid">
       <div class="sketch">
-        <h1>Raw Stroke</h1>
-        <h2 class="subtitle">2017-12-07</h2>
+        <h1>Weave</h1>
+        <h2 class="subtitle">2022-03-20</h2>
+
+        <div class="writeup before">
+          <p>Weaving baskets in abstract space guided by the hand of a master craftsman.</p>
+        </div>
 
         <div class="inline-images">
-          <figure>
-            <img src="sketches/sketch7/gallery/00.webp" alt="Alias Flow still 1">
-            <figcaption>Still 1</figcaption>
-          </figure>
-
-          <figure>
-            <img src="sketches/sketch7/gallery/01.webp" alt="Alias Flow still 2">
-            <figcaption>Still 2</figcaption>
-          </figure>
-
-          <figure>
-            <img src="sketches/sketch7/gallery/02.webp" alt="Alias Flow still 3">
-            <figcaption>Still 3</figcaption>
-          </figure>
+        <figure>
+          <img src="sketches/sketch19/gallery/00.gif" alt="00">
+        </figure>
         </div>
 
         <div class="writeup before">
-          <p>
-          Attempting to programmatically capture a vigorous, emotional, brush stroke. Question: how close can computers get to simulating human-like artistic expression? 
-          The code and animation is hosted at: <a href="https://www.openprocessing.org/sketch/485178" target="_blank">https://www.openprocessing.org/sketch/485178</a> however the frame rate and resolution of the animation may be considerably lower than intended.
-        </p>
+          <p>Please watch in fullscreen and 1080p+</p>
         </div>
 
-        <!-- START: sketch display portion  -->
-        <div class="iframe-container">
-          <div id="iframe-wrapper">
-            <iframe id="sketch-iframe"
-                    src="sketches/sketch0/src/index.html"
-                    scrolling="no"
-                    allowfullscreen
-                    title="Raw Stroke sketch"></iframe>
-          </div>
+        <div class="video-container">
+          <iframe 
+            src="https://player.vimeo.com/video/690393302?badge=0&autopause=0&player_id=0&app_id=58479" 
+            allow="autoplay; fullscreen; picture-in-picture" 
+            allowfullscreen 
+            title="needle_filter.avi">
+          </iframe>
         </div>
+
+        <div class="inline-images">
+        <figure>
+          <img src="sketches/sketch19/gallery/01.gif" alt="01">
+        </figure>
+        </div>
+
 
         <hr class="hline">
 
-        <div class="writeup after">
-          <p></p>
-        </div>
-        <!-- END:  sketch display portion -->
 
-        <div class="gallery">
-          <img src="sketches/sketch0/gallery/00.webp" alt="Gallery image 1" onclick="openLightbox(this.src)">
-          <img src="sketches/sketch0/gallery/01.webp" alt="Gallery image 2" onclick="openLightbox(this.src)">
-          <img src="sketches/sketch0/gallery/02.webp" alt="Gallery image 3" onclick="openLightbox(this.src)">
-        </div>
-
-        <!-- YouTube video -->
-        <div class="video-container">
-          <iframe width="560" height="315"
-            src="https://www.youtube.com/embed/NLWzpavP_AQ"
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen></iframe>
+        <div class="inline-images">
+        <figure>
+          <img src="sketches/sketch19/gallery/01.webp" alt="01">
+        </figure>
+        <figure>
+          <img src="sketches/sketch19/gallery/02.webp" alt="01">
+        </figure>
+        <figure>
+          <img src="sketches/sketch19/gallery/03.webp" alt="01">
+        </figure>
         </div>
 
-        <div class="video-container">
-          <iframe width="560" height="315"
-            src="https://www.youtube.com/embed/ZhQ4c4qrBJM"
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen></iframe>
+
+      <div class="gallery">
+        <img src="sketches/sketch19/gallery/04.webp" alt="Gallery image 1" onclick="openLightbox(this.src)">
+        <img src="sketches/sketch19/gallery/05.webp" alt="Gallery image 2" onclick="openLightbox(this.src)">
+        <img src="sketches/sketch19/gallery/06.webp" alt="Gallery image 3" onclick="openLightbox(this.src)">
+        <img src="sketches/sketch19/gallery/07.webp" alt="Gallery image 4" onclick="openLightbox(this.src)">
+        <img src="sketches/sketch19/gallery/08.webp" alt="Gallery image 5" onclick="openLightbox(this.src)">
+        <img src="sketches/sketch19/gallery/09.webp" alt="Gallery image 6" onclick="openLightbox(this.src)">
+        <img src="sketches/sketch19/gallery/10.webp" alt="Gallery image 7" onclick="openLightbox(this.src)">
+        <img src="sketches/sketch19/gallery/11.webp" alt="Gallery image 8" onclick="openLightbox(this.src)">
+        <img src="sketches/sketch19/gallery/12.webp" alt="Gallery image 9" onclick="openLightbox(this.src)">
+      </div>
+
+      
+
+        <hr class="hline">
+
+        <div class="writeup before">
+          <p>
+            This is work from a project done with 
+            <a href="https://www.instagram.com/babarsheikhdiagram/?hl=en" target="_blank" rel="noopener noreferrer">Babar Sheikh</a> 
+            in 2021. We wanted to capture and abstract some aspects of the local basket weaving tradition which we found especially meaningful.
+          </p>
         </div>
+
         
+        <div class="video-container">
+          <iframe width="560" height="315"
+            src="https://www.youtube.com/embed/bLI8AzJ3gVU"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen></iframe>
+        </div>
+
+
+        
+        <div class="writeup before">
+          <p>
+            <ul>
+            <li>
+              Basket weaving is one of the widest spread and oldest crafts in the history of human civilization. Baskets have been found which date back over 12,000 years. And the local basket weaving craft has been passed down, master to apprentice, through countless generations.
+            </li>
+            <li>
+              The traditional Balochi baskets are woven with <em>peesh</em> (dried dwarf palm leaves). It is fascinating how the fibers of the plant actually dictate the pattern of the weave. The grain of the fibers only allows the peesh to be bent in certain directions; in a poetic way the DNA of the plant also encodes the form of the basket. Peesh is also woven into ropes, brooms, sandals, parasols, beds, and mats.
+            </li>
+            <li>
+              In an effort to maintain a faithful connection to the craft, the dynamics of the visuals derive deeply from the process of weaving. After exploring a few techniques we settled on using sound as the conduit between the physical motions of the craftsman and the visuals. We recorded the sound for each motion of the craftsman and developed an ‘audio signature’ which was used to guide the seemingly random dynamics of the artwork.
+            </li>
+            <li>
+              The craftsmen often get visually impaired working in poor lighting for decades, but their hands carry on the work all the same (this is why the final composition is so dark). The craftsman becomes so adept that his hands seem to operate autonomously. Further, imagine sitting in the same position every day for hours doing a very repetitive motion—it is almost as if the craftsman is meditating and entering a deep trance. Doing that every day for a lifetime is probably one way to attain nirvana.
+            </li>
+            <li>
+              We also took inspiration from the words of the master craftsman we studied. In particular we explored the concepts of <em>Rozi</em> (livelihood) and <em>Barkat</em> (wholesome value). The craftsman spoke about how a man who works honestly with his hands will never be poor. About how it is possible to squander inherited wealth, but it is impossible to squander the wealth of your hands.
+            </li>
+          </ul>
+
+          </p>
+        </div>
 
       </div>
     </div>
