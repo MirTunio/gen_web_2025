@@ -1,0 +1,450 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <!-- Base path setup -->
+    <script>
+      const base = document.createElement("base");
+      if (window.location.hostname.includes("github.io")) {
+        base.href = "/gen_web_2025/";
+      } else {
+        base.href = "/";
+      }
+      document.head.prepend(base);
+    </script>
+
+    <link rel="icon" href="assets/images/favicon.jpg" type="image/jpeg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burning Daylight</title>
+
+    <style>
+      body {
+        font-family: monospace;
+        font-size: 1.3em;
+        line-height: 1.6;
+        background: #ddb89a;
+        color: #333;
+        max-width: 62.5em;
+        margin: auto;
+        padding: 1.25em;
+      }
+
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1em;
+      }
+      header h1 { font-size: 1.5em; margin: 0; }
+      a.title-link { text-decoration: none; color: #000; transition: color 0.3s ease; }
+      a.title-link:hover { color: #666; }
+      a.title-link.inactive { color: #aaa; }
+      a.title-link.inactive:hover { color: #000; }
+
+      a {
+        color: #000;              /* black text */
+        text-decoration: underline; /* always underlined */
+      }
+
+      a:hover, a:focus {
+        color: #666;              /* subtle change on hover */
+        text-decoration: underline;
+      }
+
+      nav a { font-size: 1.1em; margin-left: 1.25em; text-decoration: none; color: #333; }
+      nav a:hover { text-decoration: underline; }
+      .nav-toggle { display: none; font-size: 1.5em; background: none; border: none; cursor: pointer; }
+
+      .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(25em, 1fr)); gap: 2.5em; }
+      .sketch {
+        display: flex;
+        flex-direction: column;
+        align-items: center;   /* center non-text elements */
+      }
+
+      .sketch h1 {
+        margin: 0 0 0.625em 0;
+        font-size: 1.25em;
+        text-align: left;      /* sketch title stays left */
+        align-self: flex-start;
+      }
+
+      .subtitle {
+        margin: -0.5em 0 1em 0;  /* tighter to the title */
+        font-size: 0.95em;       /* smaller than title */
+        font-weight: normal;     /* lighter than title */
+        color: #666;             /* subtle gray tone */
+        text-align: left;
+        align-self: flex-start;
+      }
+
+      .iframe-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%; 
+        margin: 0 auto;
+      }
+
+      #iframe-wrapper {
+        width: 90vmin;   /* 90% of min(viewport width, height) */
+        height: 90vmin;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        background: transparent;
+      }
+
+      #iframe-wrapper iframe {
+        border: none;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        display: block;
+        box-sizing: border-box;
+        background: transparent;
+      }
+
+      .writeup {
+        width: 100%;           /* let text span full line */
+        text-align: left;   /* fills the line neatly */
+      }
+
+    .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(12em, 1fr));
+        gap: 1em;
+        margin-top: 2em;
+        justify-items: center; /* center thumbnails */
+      }
+
+      .gallery img {
+        width: 100%;
+        height: auto;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+      }
+      .gallery img:hover { transform: scale(1.02); }
+
+      /* Lightbox */
+      .lightbox {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0; top: 0;
+        width: 100%; height: 100%;
+        background: rgba(0,0,0,0.85);
+        justify-content: center;
+        align-items: center;
+      }
+      .lightbox img {
+        max-width: 90%;
+        max-height: 90%;
+        border: none;          /* removed border */
+        border-radius: 0;      /* removed rounded corners */
+        box-shadow: none;      /* ensure no shadow */
+      }
+      .lightbox.active {
+        display: flex;
+        border: none;     
+      }
+      .lightbox-close {
+        position: absolute;
+        border: none;     
+        top: 1em;
+        right: 1em;
+        font-size: 2em;
+        color: #fff;
+        cursor: pointer;
+        font-weight: bold;
+      }
+
+      .lightbox-arrow {
+        position: absolute;
+        bottom: 1em;        /* stick to bottom instead of center */
+        top: auto;          /* reset top */
+        transform: none;    /* remove the vertical centering */
+        font-size: 2em;     /* a bit smaller looks nicer at bottom */
+        color: #fff;
+        cursor: pointer;
+        user-select: none;
+        padding: 0 0.5em;
+      }
+      
+      .lightbox-arrow.left { left: 1em; }
+      .lightbox-arrow.right { right: 1em; }
+
+      /* YouTube embed */
+      .video-container {
+        margin-top: 2em;
+        text-align: center;
+      }
+      .video-container iframe {
+        max-width: 100%;
+      }
+
+      .hline {
+        width: 100%;            /* full width of container */
+        border: 0;              /* remove default border */
+        height: 0.5px;            /* line thickness */
+        background-color: #333; /* dark gray line */
+        margin: 5em;          /* spacing above/below */
+      }      
+
+      .inline-images {
+        display: flex;
+        flex-direction: column;
+        gap: 2em;
+        margin: 3em 0;
+        align-items: center;
+      }
+
+      .inline-images figure {
+        margin: 0;
+        text-align: center;
+      }
+
+      .inline-images img {
+        width: 90vmin;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+        border-radius: 4px;
+        cursor: pointer; /* make zoomable */
+      }
+
+      .inline-images figcaption {
+        margin-top: 0.5em;
+        font-size: 0.95em;
+        color: #555;
+      }
+
+      footer {
+        margin-top: 3.75em;
+        font-size: 0.9em;
+        text-align: center;
+        color: #777;
+      }
+
+      @media (max-width: 37.5em) {
+        body { font-size: 1.125em; line-height: 1.7; }
+        .grid { grid-template-columns: 1fr !important; gap: 1.5em; }
+        .iframe-container { width: 90vmin; aspect-ratio: 1 / 1; margin: 0 auto; }
+        .nav-toggle { display: block; }
+        .nav-links { display: none; flex-direction: column; width: 100%; margin-top: 0.5em; align-items: flex-end; }
+        .nav-links.active { display: flex; }
+        .nav-links a { display: block; margin: 0.3125em 0; font-size: 1.1em; text-align: right; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1><a class="title-link inactive" href="index.html">Burning Daylight</a></h1>
+      <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+      <nav class="nav-links">
+        <a href="index.html">genart</a>
+        <a href="fiction.html">fiction</a>
+        <a href="nonfiction.html">nonfiction</a>
+        <a href="about.html">about</a>
+        <a href="contact.html">contact</a>
+      </nav>
+    </header>
+    
+    <div class="grid">
+      <div class="sketch">
+        <h1>بخشیا</h1>
+        <h2 class="subtitle">2024-08-08</h2>
+
+        <div class="writeup before">
+          <p><i>
+            sound on<br>
+            best viewed on laptop/tablet, may not work on iOS<br>
+            click the black box to start once it loads…<br>
+          </i></p>
+        </div>
+
+        <!-- START: sketch display portion  -->
+        <div class="iframe-container">
+          <div id="iframe-wrapper">
+            <iframe id="sketch-iframe"
+                    src="sketches/sketch31/src/index.html"
+                    scrolling="no"
+                    allowfullscreen
+                    title="Raw Stroke sketch"></iframe>
+          </div>
+        </div>
+
+
+        <div class="writeup after">
+          <p>
+            <i>refresh page to start again</i><br><br>
+
+            Abida:<br>
+            اٹھ فریدا ستیا دنیا ویکھن جا<br>
+            جے کوئی مل جائے بخشیا<br>
+            تے توں وی بخشیا جائے<br>
+
+            Uth Farida suttiya dunya vekhan ja<br>
+            Je koi mil jaye bakhsiya<br>
+            Te tu vi bakhsya jaye<br>
+
+            My Meaning:<br>
+            Wake up Farid and go see the world<br>
+            So you may find someone to forgive<br>
+            And perhaps, you too may be forgiven<br><br>
+
+            Baba Fareed:<br>
+            Uth Farida mela vekhan ja,<br>
+            Je koi mil jaye bakshiya ve,<br>
+            Tu vi bakshya ja.<br><br>
+
+            Default Meaning:<br>
+            Wake up Farid and go see the world<br>
+            So you may find someone who is forgiven (has attained spiritual success)<br>
+            And so you too may learn how to be forgiven (attain spiritual success)<br><br>
+
+          </p>
+        </div>
+        <!-- END:  sketch display portion -->
+
+
+
+        <div class="inline-images">
+          <figure>
+            <img src="sketches/sketch31/gallery/00.webp" alt="Alias Flow still 1">
+            <figcaption></figcaption>
+        </div>
+
+
+      <div class="writeup before">
+        <p>
+          Audio: Abida Parveen singing Kalam by Baba Ghulam Fareed in introduction to her song 
+          <a href="https://youtu.be/pGaWRdyZQNE?t=109" target="_blank">here</a>.
+        </p>
+      </div>
+
+
+      </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+      <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+      <span class="lightbox-arrow left" onclick="prevImage()">&#10094;</span>
+      <span class="lightbox-arrow right" onclick="nextImage()">&#10095;</span>
+      <img id="lightbox-img" src="" alt="Expanded view">
+    </div>
+
+    <footer><p></p></footer>
+    
+    <script>
+  // Select both gallery and inline images
+  const allImages = Array.from(document.querySelectorAll('.gallery img, .inline-images img'));
+  let currentIndex = 0;
+
+  function openLightbox(src) {
+    currentIndex = allImages.findIndex(img => img.src === src);
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').classList.add('active');
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+  }
+
+  function nextImage() {
+    currentIndex = (currentIndex + 1) % allImages.length;
+    document.getElementById('lightbox-img').src = allImages[currentIndex].src;
+  }
+
+  function prevImage() {
+    currentIndex = (currentIndex - 1 + allImages.length) % allImages.length;
+    document.getElementById('lightbox-img').src = allImages[currentIndex].src;
+  }
+
+  // Attach click events to all images
+  allImages.forEach(img => {
+    img.addEventListener('click', () => openLightbox(img.src));
+  });
+
+  // Close lightbox on Escape key
+  document.addEventListener('keydown', (e) => {
+    const lightbox = document.getElementById('lightbox');
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === "Escape") closeLightbox();
+    if (e.key === "ArrowRight") nextImage();
+    if (e.key === "ArrowLeft") prevImage();
+  });
+</script>
+
+
+    <!-- Script specific to the iframe wrapper: sizes it to available viewport space and (if same-origin) centers the sketch content inside the iframe -->
+    <script>
+      (function(){
+        const header = document.querySelector('header');
+        const wrapper = document.getElementById('iframe-wrapper');
+        const iframe = document.getElementById('sketch-iframe');
+
+        function resizeWrapper(){
+          const headerRect = header ? header.getBoundingClientRect() : { bottom: 0, height: 0 };
+          // available: space below header to bottom of viewport
+          const paddingEst = 32; // small buffer for page padding/margins
+          const available = Math.max(300, window.innerHeight - headerRect.bottom - paddingEst);
+          // cap at 90vh to avoid covering everything
+          const final = Math.min(available, Math.round(window.innerHeight * 0.9));
+          wrapper.style.height = final + 'px';
+        }
+
+        function tryCenterIframeContent(){
+          try {
+            const doc = iframe.contentDocument || iframe.contentWindow.document;
+            if (!doc) return;
+
+            // Ensure full-height document and center its body contents
+            doc.documentElement.style.height = '100%';
+            doc.body.style.height = '100%';
+            doc.body.style.margin = '0';
+            doc.body.style.display = 'flex';
+            doc.body.style.justifyContent = 'center';
+            doc.body.style.alignItems = 'center';
+            doc.body.style.overflow = 'hidden';
+
+            // If there is a canvas, constrain it so it doesn't overflow the wrapper
+            const canvas = doc.querySelector('canvas');
+            if (canvas) {
+              // Allow the sketch to remain crisp if it sizes itself; otherwise limit visuals
+              canvas.style.maxWidth = '100%';
+              canvas.style.maxHeight = '100%';
+              canvas.style.width = 'auto';
+              canvas.style.height = 'auto';
+              canvas.style.display = 'block';
+            }
+          } catch (e) {
+            // likely cross-origin — silently ignore
+          }
+        }
+
+        // Recalculate on load/resize/orientation change
+        window.addEventListener('resize', resizeWrapper);
+        window.addEventListener('orientationchange', resizeWrapper);
+
+        // Try to center after the iframe loads
+        iframe.addEventListener('load', function(){
+          resizeWrapper();
+          tryCenterIframeContent();
+          // Try again shortly in case the sketch resizes itself after load
+          setTimeout(tryCenterIframeContent, 500);
+          setTimeout(tryCenterIframeContent, 1500);
+        });
+
+        // initial sizing
+        resizeWrapper();
+      })();
+    </script>
+  </body>
+  </html>

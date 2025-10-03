@@ -27,6 +27,20 @@
         max-width: 62.5em;
         margin: auto;
         padding: 1.25em;
+        -ms-overflow-style: none;  /* IE/Edge */
+        scrollbar-width: none;     /* Firefox */
+        overflow-y: auto;        /* Ensure scrolling still works */
+        overflow: auto;        /* Ensure scrolling still works */
+      }
+
+      html {
+        scrollbar-width: none;   /* Firefox */
+        -ms-overflow-style: none; /* IE/Edge */
+      }
+
+      html::-webkit-scrollbar,
+      body::-webkit-scrollbar {
+        display: none;             /* Chrome, Safari */
       }
 
       a, header h1, header h2, nav a, .subtitle, footer, .writeup p, .gallery img, .inline-images figcaption {
