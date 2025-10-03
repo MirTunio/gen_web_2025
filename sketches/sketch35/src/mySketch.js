@@ -17,9 +17,10 @@ function setup() {
 function draw() {
   blendMode(BLEND);
   background(0);
+  noStroke();
+  rect(0,0,width,height);
   stroke(255);
   strokeWeight(0.5);
-  rect(0,0,width,height);
   blendMode(ADD);
 
   let w = 6 + 2 * noise(t * 10);
