@@ -1,161 +1,246 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<script>
-  // Base path setup (for local vs GitHub Pages)
-  const base = document.createElement("base");
-  if (window.location.hostname.includes("github.io")) {
-    base.href = "/gen_web_2025/";  // deployed on GitHub Pages
-  } else {
-    base.href = "/";               // local testing
-  }
-  document.head.prepend(base);
-</script>
-<link rel="icon" href="assets/images/favicon.jpg" type="image/jpeg">
+ <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <!-- Base path setup -->
+    <script>
+      const base = document.createElement("base");
+      if (window.location.hostname.includes("github.io")) {
+        base.href = "/gen_web_2025/";
+      } else {
+        base.href = "/";
+      }
+      document.head.prepend(base);
+    </script>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Burning Daylight</title>
+    <link rel="icon" href="assets/images/favicon.jpg" type="image/jpeg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burning Daylight</title>
 
-<style>
-  /* Base styles */
-  body {
-    font-family: monospace;
-    font-size: 1em;        
-    line-height: 1.6;
-    background: #FAFAFA;
-    color: #333;
-    margin: 0;
-    padding: 1.25em;
-  }
+    <style>
+      body {
+        font-family: monospace;
+        font-size: 1.1em;
+        line-height: 1.6;
+        background: #FAFAFA;
+        color: #333;
+        max-width: 62.5em;
+        margin: auto;
+        padding: 1.25em;
+      }
 
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2.5em;  
-  }
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1em;
+      }
+      header h1 { font-size: 1.5em; margin: 0; }
+      a.title-link { text-decoration: none; color: #000; transition: color 0.3s ease; }
+      a.title-link:hover { color: #666; }
+      a.title-link.inactive { color: #aaa; }
+      a.title-link.inactive:hover { color: #000; }
 
-  header h1 {
-    font-size: 1.5em;
-    margin: 0;
-  }
+      a {
+        color: #000;              /* black text */
+        text-decoration: underline; /* always underlined */
+      }
 
-  a.title-link {
-    text-decoration: none !important;
-    color: #000;
-    transition: color 0.3s ease;
-  }
+      a:hover, a:focus {
+        color: #666;              /* subtle change on hover */
+        text-decoration: underline;
+      }
 
-  a.title-link:hover {
-    color: #666;
-  }
+      nav a { font-size: 1.1em; margin-left: 1.25em; text-decoration: none; color: #333; }
+      nav a:hover { text-decoration: underline; }
+      .nav-toggle { display: none; font-size: 1.5em; background: none; border: none; cursor: pointer; }
 
-  nav a {
-    font-size: 1.1em;
-    margin-left: 1.25em;   
-    text-decoration: none;
-    color: #333;
-  }
+      .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(25em, 1fr)); gap: 2.5em; }
+      .sketch {
+        display: flex;
+        flex-direction: column;
+        align-items: center;   /* center non-text elements */
+      }
 
-  nav a:hover {
-    text-decoration: underline;
-  }
+      .sketch h1 {
+        margin: 0 0 0.625em 0;
+        font-size: 1.25em;
+        text-align: left;      /* sketch title stays left */
+        align-self: flex-start;
+      }
 
-  /* Hamburger button */
-  .nav-toggle {
-    display: none;
-    font-size: 1.5em;
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
+      .subtitle {
+        margin: -0.5em 0 1em 0;  /* tighter to the title */
+        font-size: 0.95em;       /* smaller than title */
+        font-weight: normal;     /* lighter than title */
+        color: #666;             /* subtle gray tone */
+        text-align: left;
+        align-self: flex-start;
+      }
 
-  /* Grid layout */
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 2em;             
-  }
+      .iframe-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%; 
+        margin: 0 auto;
+      }
 
-  .card {
-    display: block;
-    text-decoration: none;
-    color: inherit;
-    transition: transform 0.2s ease;
-  }
+      #iframe-wrapper {
+        width: 90vmin;   /* 90% of min(viewport width, height) */
+        height: 90vmin;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        background: transparent;
+      }
 
-  .card:hover {
-    transform: scale(1.02);
-  }
+      #iframe-wrapper iframe {
+        border: none;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        display: block;
+        box-sizing: border-box;
+        background: transparent;
+      }
 
-  /* 16:9 thumbnail container */
-  .thumb {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    overflow: hidden;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
+      .writeup {
+        width: 100%;           /* let text span full line */
+        text-align: left;   /* fills the line neatly */
+      }
 
-  .thumb img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
+    .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(12em, 1fr));
+        gap: 1em;
+        margin-top: 2em;
+        justify-items: center; /* center thumbnails */
+      }
 
-  .title {
-    margin-top: 0.5em;
-    font-size: 1.1em;
-    font-weight: bold;
-  }
+      .gallery img {
+        width: 100%;
+        height: auto;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+      }
+      .gallery img:hover { transform: scale(1.02); }
 
-  .subtitle {
-    margin-top: 0.25em;
-    font-size: 0.9em;
-    color: #666;
-  }
+      /* Lightbox */
+      .lightbox {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0; top: 0;
+        width: 100%; height: 100%;
+        background: rgba(0,0,0,0.85);
+        justify-content: center;
+        align-items: center;
+      }
+      .lightbox img {
+        max-width: 90%;
+        max-height: 90%;
+        border: none;          /* removed border */
+        border-radius: 0;      /* removed rounded corners */
+        box-shadow: none;      /* ensure no shadow */
+      }
+      .lightbox.active {
+        display: flex;
+        border: none;     
+      }
+      .lightbox-close {
+        position: absolute;
+        border: none;     
+        top: 1em;
+        right: 1em;
+        font-size: 2em;
+        color: #fff;
+        cursor: pointer;
+        font-weight: bold;
+      }
 
-  footer {
-    margin-top: 3.75em;      
-    font-size: 0.9em;
-    text-align: center;
-    color: #777;
-  }
+      .lightbox-arrow {
+        position: absolute;
+        bottom: 1em;        /* stick to bottom instead of center */
+        top: auto;          /* reset top */
+        transform: none;    /* remove the vertical centering */
+        font-size: 2em;     /* a bit smaller looks nicer at bottom */
+        color: #fff;
+        cursor: pointer;
+        user-select: none;
+        padding: 0 0.5em;
+      }
+      
+      .lightbox-arrow.left { left: 1em; }
+      .lightbox-arrow.right { right: 1em; }
 
-  /* Mobile responsive */
-  @media (max-width: 37.5em) {
-    .grid {
-      grid-template-columns: 1fr;
-      gap: 1.5em;
-    }
+      /* YouTube embed */
+      .video-container {
+        margin-top: 2em;
+        text-align: center;
+      }
+      .video-container iframe {
+        max-width: 100%;
+      }
 
-    .nav-toggle {
-      display: block;
-    }
+      .hline {
+        width: 100%;            /* full width of container */
+        border: 0;              /* remove default border */
+        height: 0.5px;            /* line thickness */
+        background-color: #333; /* dark gray line */
+        margin: 5em;          /* spacing above/below */
+      }      
 
-    .nav-links {
-      display: none;
-      flex-direction: column;
-      width: 100%;
-      margin-top: 0.5em;
-      align-items: flex-end;
-    }
+      .inline-images {
+        display: flex;
+        flex-direction: column;
+        gap: 2em;
+        margin: 3em 0;
+        align-items: center;
+      }
 
-    .nav-links.active {
-      display: flex;
-    }
+      .inline-images figure {
+        margin: 0;
+        text-align: center;
+      }
 
-    .nav-links a {
-      margin: 0.3em 0;
-      font-size: 1.1em;
-      text-align: right;
-    }
-  }
-</style>
-</head>
+      .inline-images img {
+        width: 90vmin;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+        border-radius: 4px;
+        cursor: pointer; /* make zoomable */
+      }
+
+      .inline-images figcaption {
+        margin-top: 0.5em;
+        font-size: 0.95em;
+        color: #555;
+      }
+
+      footer {
+        margin-top: 3.75em;
+        font-size: 0.9em;
+        text-align: center;
+        color: #777;
+      }
+
+      @media (max-width: 37.5em) {
+        body { font-size: 1.125em; line-height: 1.7; }
+        .grid { grid-template-columns: 1fr !important; gap: 1.5em; }
+        .iframe-container { width: 90vmin; aspect-ratio: 1 / 1; margin: 0 auto; }
+        .nav-toggle { display: block; }
+        .nav-links { display: none; flex-direction: column; width: 100%; margin-top: 0.5em; align-items: flex-end; }
+        .nav-links.active { display: flex; }
+        .nav-links a { display: block; margin: 0.3125em 0; font-size: 1.1em; text-align: right; }
+      }
+    </style>
+  </head>
 
 <body>
   <header>
@@ -173,93 +258,33 @@
     </nav>
   </header>
 
-  <h2>Latest work:</h2>
+<h2>Contact:</h2>
+<p>
+  <span id="email" style="cursor:pointer; text-decoration:underline; color:#000;">
+    tuniomurtaza@gmail.com</span>
+  <span style="color:#999; margin-left:6px;">(click to copy)</span>
+  <span id="copied" style="margin-left:10px; color:green; display:none;">
+    (copied!)
+  </span>
+</p>
 
-  <div class="grid">
-    <!-- ADD NEW SKETCH HERE -->
+<script>
+  const emailSpan = document.getElementById("email");
+  const copiedMsg = document.getElementById("copied");
 
-    <a href="sketches/sketch8/sketch8.html" class="card">
-      <div class="thumb">
-        <img src="sketches/sketch8/src/thumb.webp" alt="binary">
-      </div>
-      <div class="title">Binary</div>
-      <div class="subtitle">2018-12-13</div>
-    </a>
+  emailSpan.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(emailSpan.textContent.trim());
+      copiedMsg.style.display = "inline";
+      setTimeout(() => {
+        copiedMsg.style.display = "none";
+      }, 1500);
+    } catch (err) {
+      alert("Failed to copy email");
+    }
+  });
+</script>
 
-    <a href="sketches/sketch7/sketch7.html" class="card">
-      <div class="thumb">
-        <img src="sketches/sketch7/src/thumb.webp" alt="breathe">
-      </div>
-      <div class="title">Alias Flow</div>
-      <div class="subtitle">Aliasing opens the door to another dimension… 2018-12-12</div>
-    </a>
-
-    <a href="sketches/sketch6/sketch6.html" class="card">
-      <div class="thumb">
-        <img src="sketches/sketch6/src/thumb.webp" alt="breathe">
-      </div>
-      <div class="title">Breathe</div>
-      <div class="subtitle">2014</div>
-    </a>
-
-    <a href="sketches/sketch5/sketch5.html" class="card">
-      <div class="thumb">
-        <img src="sketches/sketch5/src/thumb.png" alt="conf2">
-      </div>
-      <div class="title">Confusion 2</div>
-      <div class="subtitle">2014</div>
-    </a>
-
-    <a href="sketches/sketch4/sketch4.html" class="card">
-      <div class="thumb">
-        <img src="sketches/sketch4/src/thumb.webp" alt="conf1">
-      </div>
-      <div class="title">Confusion 1</div>
-      <div class="subtitle">2014</div>
-    </a>
-
-    <a href="sketches/sketch3/sketch3.html" class="card">
-      <div class="thumb">
-        <img src="sketches/sketch3/src/thumb.webp" alt="escher">
-      </div>
-      <div class="title">Escher 1</div>
-      <div class="subtitle">2013-01-03</div>
-    </a>
-    
-    <a href="sketches/sketch2/sketch2.html" class="card">
-      <div class="thumb">
-        <img src="sketches/sketch2/src/thumb.webp" alt="candy v3">
-      </div>
-      <div class="title">Candy V3</div>
-      <div class="subtitle">2012-10-07</div>
-    </a>
-
-    <a href="sketches/sketch1/sketch1.html" class="card">
-      <div class="thumb">
-        <img src="sketches/sketch1/src/thumb.webp" alt="candy v2">
-      </div>
-      <div class="title">Candy V2</div>
-      <div class="subtitle">2012-09-02</div>
-    </a>
-
-    <a href="sketches/sketch0/sketch0.html" class="card">
-      <div class="thumb">
-        <img src="sketches/sketch0/src/thumb.webp" alt="rawstroke">
-      </div>
-      <div class="title">Raw Stroke</div>
-      <div class="subtitle">2017-12-07</div>
-    </a>
-
-    
-    <a href="sketches/_template/sketch0.html" class="card">
-      <div class="thumb">
-        <img src="sketches/_template/src/thumb.webp" alt="Template thumb">
-      </div>
-      <div class="title">TEMPLATE Raw Stroke</div>
-      <div class="subtitle">2017-12-07</div>
-    </a>
-
-  </div>
 
   <footer>
     <p></p>
