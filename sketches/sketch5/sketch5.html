@@ -166,9 +166,11 @@
       }
       .lightbox.active {
         display: flex;
+        border: none;     
       }
       .lightbox-close {
         position: absolute;
+        border: none;     
         top: 1em;
         right: 1em;
         font-size: 2em;
@@ -179,15 +181,16 @@
 
       .lightbox-arrow {
         position: absolute;
-        top: 50%;
-        font-size: 3em;
+        bottom: 1em;        /* stick to bottom instead of center */
+        top: auto;          /* reset top */
+        transform: none;    /* remove the vertical centering */
+        font-size: 2em;     /* a bit smaller looks nicer at bottom */
         color: #fff;
         cursor: pointer;
         user-select: none;
-        transform: translateY(-50%);
-        padding: 0 0.2em;
+        padding: 0 0.5em;
       }
-
+      
       .lightbox-arrow.left { left: 1em; }
       .lightbox-arrow.right { right: 1em; }
 
@@ -225,24 +228,33 @@
         .nav-links a { display: block; margin: 0.3125em 0; font-size: 1.1em; text-align: right; }
       }
 
-      .code-pen {
-        width: 100%;              /* full container width */
-        max-width: 100%;          /* never exceed parent width */
-        overflow-x: auto;         /* scroll if line is extremely long */
-        background-color: #f5f5f5;
-        padding: 0.5em;
-        border-radius: 4px;
-        box-sizing: border-box;
-        margin: 1em 0;
-      }
+.code-pen {
+  width: 100%;
+  overflow-x: auto;           /* scroll only inside the code area */
+  background: #f5f5f5;
+  border-radius: 4px;
+  padding: 0.5em;
+  margin: 1em 0;
+  box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
+}
 
-      .code-pen pre {
-        white-space: pre-wrap;    /* wrap long lines */
-        word-break: break-word;   /* break long words */
-        margin: 0;
-        font-family: monospace;
-        overflow: visible;        /* remove Prism overflow issues */
-      }
+.code-pen pre {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  font-family: monospace;
+  white-space: pre;           /* allow horizontal scroll */
+  overflow-x: auto;           /* scroll within pre if needed */
+  display: block;
+  min-width: 0;               /* ✅ prevents pre from widening page */
+  max-width: 100%;            /* ✅ strictly enforce container width */
+  box-sizing: border-box;
+}
+
+
+
     </style>
   </head>
 
@@ -306,7 +318,7 @@
         <hr class="hline">
 
 
-      <div class="code-pen">
+<div class="code-block">
   <pre><code class="language-java">
 float x, y, dx, dy;
 int [] listx = new int[600/4];
@@ -318,10 +330,10 @@ void setup() {
   dx = width/4; 
   dy = height/4;
   
-  for (int a = 0; a &lt; listx.length; a++) {
+  for (int a = 0; a < listx.length; a++) {
     listx[a] = (a + 1) * 10;
   }
-  for (int a = 0; a &lt; listx.length; a++) {
+  for (int a = 0; a < listx.length; a++) {
     listx[a] = (a + 1) * 10;
   }
  
@@ -332,8 +344,8 @@ void setup() {
 }
 
 void draw() {
-  for(int i=0; i &lt; listx.length;i++){
-    for(int j=0; j &lt; listy.length;j++){
+  for(int i=0; i < listx.length;i++){
+    for(int j=0; j < listy.length;j++){
       point(listx[i]+0.375*width,listy[j]+0.375*height);
     }
   }  
@@ -344,7 +356,7 @@ void draw() {
 void shuffle(int[] value) {
   int temp;
   int pick;
-  for (int i=0; i &lt; value.length; i++){
+  for (int i=0; i < value.length; i++){
     pick  = (int)random(value.length); 
     temp = value[i]; 
     value[i] = pick; 
@@ -353,6 +365,7 @@ void shuffle(int[] value) {
 }
   </code></pre>
 </div>
+
 
 
     <!-- Lightbox -->

@@ -18,10 +18,9 @@
 <title>Burning Daylight</title>
 
 <style>
-  /* Base styles */
   body {
     font-family: monospace;
-    font-size: 1em;        
+    font-size: 1em;
     line-height: 1.6;
     background: #FAFAFA;
     color: #333;
@@ -33,36 +32,16 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 2.5em;  
+    margin-bottom: 2.5em;
   }
 
-  header h1 {
-    font-size: 1.5em;
-    margin: 0;
-  }
+  header h1 { font-size: 1.5em; margin: 0; }
+  a.title-link { text-decoration: none !important; color: #000; transition: color 0.3s ease; }
+  a.title-link:hover { color: #666; }
 
-  a.title-link {
-    text-decoration: none !important;
-    color: #000;
-    transition: color 0.3s ease;
-  }
+  nav a { font-size: 1.1em; margin-left: 1.25em; text-decoration: none; color: #333; }
+  nav a:hover { text-decoration: underline; }
 
-  a.title-link:hover {
-    color: #666;
-  }
-
-  nav a {
-    font-size: 1.1em;
-    margin-left: 1.25em;   
-    text-decoration: none;
-    color: #333;
-  }
-
-  nav a:hover {
-    text-decoration: underline;
-  }
-
-  /* Hamburger button */
   .nav-toggle {
     display: none;
     font-size: 1.5em;
@@ -71,11 +50,10 @@
     cursor: pointer;
   }
 
-  /* Grid layout */
   .grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 2em;             
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2em;
   }
 
   .card {
@@ -85,11 +63,8 @@
     transition: transform 0.2s ease;
   }
 
-  .card:hover {
-    transform: scale(1.02);
-  }
+  .card:hover { transform: scale(1.02); }
 
-  /* 16:9 thumbnail container */
   .thumb {
     position: relative;
     width: 100%;
@@ -106,53 +81,22 @@
     display: block;
   }
 
-  .title {
-    margin-top: 0.5em;
-    font-size: 1.1em;
-    font-weight: bold;
-  }
-
-  .subtitle {
-    margin-top: 0.25em;
-    font-size: 0.9em;
-    color: #666;
-  }
+  .title { margin-top: 0.5em; font-size: 1.1em; font-weight: bold; }
+  .subtitle { margin-top: 0.25em; font-size: 0.9em; color: #666; }
 
   footer {
-    margin-top: 3.75em;      
+    margin-top: 3.75em;
     font-size: 0.9em;
     text-align: center;
     color: #777;
   }
 
-  /* Mobile responsive */
   @media (max-width: 37.5em) {
-    .grid {
-      grid-template-columns: 1fr;
-      gap: 1.5em;
-    }
-
-    .nav-toggle {
-      display: block;
-    }
-
-    .nav-links {
-      display: none;
-      flex-direction: column;
-      width: 100%;
-      margin-top: 0.5em;
-      align-items: flex-end;
-    }
-
-    .nav-links.active {
-      display: flex;
-    }
-
-    .nav-links a {
-      margin: 0.3em 0;
-      font-size: 1.1em;
-      text-align: right;
-    }
+    .grid { grid-template-columns: 1fr; gap: 1.5em; }
+    .nav-toggle { display: block; }
+    .nav-links { display: none; flex-direction: column; width: 100%; margin-top: 0.5em; align-items: flex-end; }
+    .nav-links.active { display: flex; }
+    .nav-links a { margin: 0.3em 0; font-size: 1.1em; text-align: right; }
   }
 </style>
 </head>
@@ -160,10 +104,7 @@
 <body>
   <header>
     <h1><a class="title-link" href="index.html">Burning Daylight</a></h1>
-
-    <!-- Hamburger button -->
     <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
-
     <nav class="nav-links">
       <a href="index.html">genart</a>
       <a href="fiction.html">fiction</a>
@@ -174,350 +115,76 @@
   </header>
 
   <h2>Latest work:</h2>
+  <div class="grid" id="sketchGrid"></div>
 
-  <div class="grid">
-    <!-- ADD NEW SKETCH HERE -->  
-
-    <a href="sketches/sketch40/sketch40.html" class="card">
-      <div class="thumb">
-        <img src="sketches/sketch40/src/thumb.png" alt="soma">
-      </div>
-      <div class="title">soma</div>
-      <div class="subtitle">2025-10-03</div>
-    </a>
-
-    <a href="sketches/sketch39/sketch39.html" class="card">
-      <div class="thumb">
-        <img src="sketches/sketch39/src/thumb.png" alt="khair">
-      </div>
-      <div class="title">Jaday peir uttay khair</div>
-      <div class="subtitle">2025-09-12</div>
-    </a>
-
-    <a href="sketches/sketch38/sketch38.html" class="card">
-      <div class="thumb">
-        <img src="sketches/sketch38/src/thumb.png" alt="stars">
-      </div>
-      <div class="title">Stars Are Projectors</div>
-      <div class="subtitle">2025-09-01</div>
-    </a>
-
-    <a href="sketches/sketch37/sketch37.html" class="card">
-      <div class="thumb">
-        <img src="sketches/sketch37/src/thumb.png" alt="fantome">
-      </div>
-      <div class="title">Les Fantômes</div>
-      <div class="subtitle">2025-08-24</div>
-    </a>   
-
-    <a href="sketches/sketch36/sketch36.html" class="card">
-      <div class="thumb">
-        <img src="sketches/sketch36/src/thumb.png" alt="s2">
-      </div>
-      <div class="title">S2</div>
-      <div class="subtitle">2025-08-18</div>
-    </a>   
-
-    <a href="sketches/sketch35/sketch35.html" class="card">
-      <div class="thumb">
-        <img src="sketches/sketch35/src/thumb.jpg" alt="fire">
-      </div>
-      <div class="title">Fire</div>
-      <div class="subtitle">2025-03-31</div>
-    </a>   
-
-    <a href="sketches/sketch34/sketch34.html" class="card">
-      <div class="thumb">
-        <img src="sketches/sketch34/src/thumb.webp" alt="goethe">
-      </div>
-      <div class="title">Goethe</div>
-      <div class="subtitle">2025-03-28</div>
-    </a>   
-
-    <a href="sketches/sketch33/sketch33.html" class="card">
-      <div class="thumb">
-        <img src="sketches/sketch33/src/thumb.webp" alt="tinnitus">
-      </div>
-      <div class="title">Tinnitus</div>
-      <div class="subtitle">2025-02-10</div>
-    </a>   
-
-    <a href="sketches/sketch32/sketch32.html" class="card">
-      <div class="thumb">
-        <img src="sketches/sketch32/src/thumb.webp" alt="deheel">
-      </div>
-      <div class="title">de_heel</div>
-      <div class="subtitle">2024-08-22</div>
-    </a>   
-
-    <a href="sketches/sketch31/sketch31.html" class="card">
-      <div class="thumb">
-        <img src="sketches/sketch31/src/thumb.webp" alt="Bakshiya">
-      </div>
-      <div class="title">بخشیا</div>
-      <div class="subtitle">2024-08-08</div>
-    </a>   
-
-    <a href="sketches/sketch30/sketch30.html" class="card">
-      <div class="thumb">
-        <img src="sketches/sketch30/src/thumb.webp" alt="Bedouin">
-      </div>
-      <div class="title">Bedouin</div>
-      <div class="subtitle">2024-07-14</div>
-    </a>   
-
-    <a href="sketches/sketch29/sketch29.html" class="card">
-      <div class="thumb">
-        <img src="sketches/sketch29/src/thumb.webp" alt="Evanescent">
-      </div>
-      <div class="title">Evanescent</div>
-      <div class="subtitle">2024-03-10</div>
-    </a>  
-
-    <a href="sketches/sketch28/sketch28.html" class="card">
-      <div class="thumb">
-        <img src="sketches/sketch28/src/thumb.webp" alt="emerald">
-      </div>
-      <div class="title">Emerald</div>
-      <div class="subtitle">2024-02-01</div>
-    </a>  
-
-    <a href="sketches/sketch27/sketch27.html" class="card">
-      <div class="thumb">
-        <img src="sketches/sketch27/src/thumb.webp" alt="aarzi">
-      </div>
-      <div class="title">عارضی</div>
-      <div class="subtitle">2024-01-30</div>
-    </a>  
-
-    <a href="sketches/sketch26/sketch26.html" class="card">
-      <div class="thumb">
-        <img src="sketches/sketch26/src/thumb.png" alt="earendel">
-      </div>
-      <div class="title">Earendel</div>
-      <div class="subtitle">2023-11-15</div>
-    </a>  
-
-    <a href="sketches/sketch25/sketch25.html" class="card">
-      <div class="thumb">
-        <img src="sketches/sketch25/src/thumb.webp" alt="unprec">
-      </div>
-      <div class="title">unprecedented.</div>
-      <div class="subtitle">2023-10-13</div>
-    </a> 
-
-    <a href="sketches/sketch24/sketch24.html" class="card">
-      <div class="thumb">
-        <img src="sketches/sketch24/src/thumb.webp" alt="1ss">
-      </div>
-      <div class="title">1s/s</div>
-      <div class="subtitle">2023-10-13</div>
-    </a>
-
-    <a href="sketches/sketch23/sketch23.html" class="card">
-      <div class="thumb">
-        <img src="sketches/sketch23/src/thumb.webp" alt="dir">
-      </div>
-      <div class="title">direction</div>
-      <div class="subtitle">2023-09-24</div>
-    </a>
-
-    <a href="sketches/sketch22/sketch22.html" class="card">
-      <div class="thumb">
-        <img src="sketches/sketch22/src/thumb.webp" alt="hna">
-      </div>
-      <div class="title">to be a real person</div>
-      <div class="subtitle">2023-09-14</div>
-    </a>
-
-    <a href="sketches/sketch21/sketch21.html" class="card">
-      <div class="thumb">
-        <img src="sketches/sketch21/src/thumb.png" alt="bifurc">
-      </div>
-      <div class="title">age</div>
-      <div class="subtitle">2023-04-13</div>
-    </a>
-
-    <a href="sketches/sketch20/sketch20.html" class="card">
-      <div class="thumb">
-        <img src="sketches/sketch20/src/thumb.webp" alt="bifurc">
-      </div>
-      <div class="title">Bifurcation</div>
-      <div class="subtitle">2022-06-08</div>
-    </a>
-
-    <a href="sketches/sketch19/sketch19.html" class="card">
-      <div class="thumb">
-        <img src="sketches/sketch19/gallery/00.gif" alt="weave">
-      </div>
-      <div class="title">Weave</div>
-      <div class="subtitle">2022-03-20</div>
-    </a>
-
-    <a href="sketches/sketch18/sketch18.html" class="card">
-      <div class="thumb">
-        <img src="sketches/sketch18/src/thumb.webp" alt="perpetual departure">
-      </div>
-      <div class="title">unconcern</div>
-      <div class="subtitle">2021-10-12</div>
-    </a>
-
-    <a href="sketches/sketch17/sketch17.html" class="card">
-      <div class="thumb">
-        <img src="sketches/sketch17/src/thumb.webp" alt="perpetual departure">
-      </div>
-      <div class="title">OLLA2</div>
-      <div class="subtitle">2021-09-29</div>
-    </a>
-
-    <a href="sketches/sketch16/sketch16.html" class="card">
-      <div class="thumb">
-        <img src="sketches/sketch16/src/thumb.webp" alt="perpetual departure">
-      </div>
-      <div class="title">OLLA1</div>
-      <div class="subtitle">2021-09-22</div>
-    </a>
-
-    <a href="sketches/sketch15/sketch15.html" class="card">
-      <div class="thumb">
-        <img src="sketches/sketch15/src/thumb.webp" alt="perpetual departure">
-      </div>
-      <div class="title">Perpetual Departure</div>
-      <div class="subtitle">2020-07-20</div>
-    </a>
-
-    <a href="sketches/sketch14/sketch14.html" class="card">
-      <div class="thumb">
-        <img src="sketches/sketch14/src/thumb.png" alt="tamasho">
-      </div>
-      <div class="title">Tamasho</div>
-      <div class="subtitle">2019-12-02</div>
-    </a>
-
-    <a href="sketches/sketch13/sketch13.html" class="card">
-      <div class="thumb">
-        <img src="sketches/sketch13/src/thumb.png" alt="cafe">
-      </div>
-      <div class="title">The Book of Sand</div>
-      <div class="subtitle">2018-11-27 - Peeking into the mind of Jorge Luis Borges</div>
-    </a>
-
-    <a href="sketches/sketch12/sketch12.html" class="card">
-      <div class="thumb">
-        <img src="sketches/sketch12/src/thumb.webp" alt="cafe">
-      </div>
-      <div class="title">Touch and Go</div>
-      <div class="subtitle">2019-08-08</div>
-    </a>
-
-    <a href="sketches/sketch11/sketch11.html" class="card">
-      <div class="thumb">
-        <img src="sketches/sketch11/src/thumb.webp" alt="cafe">
-      </div>
-      <div class="title">Café Crème</div>
-      <div class="subtitle">2019-08-02</div>
-    </a>
-
-    <a href="sketches/sketch10/sketch10.html" class="card">
-      <div class="thumb">
-        <img src="sketches/sketch10/src/thumb.png" alt="rediving">
-      </div>
-      <div class="title">ReDiving</div>
-      <div class="subtitle">2019-07-26</div>
-    </a>
-
-    <a href="sketches/sketch9/sketch9.html" class="card">
-      <div class="thumb">
-        <img src="sketches/sketch9/src/thumb.png" alt="imran">
-      </div>
-      <div class="title">Imran Mir</div>
-      <div class="subtitle">2019-05-15</div>
-    </a>
-
-    <a href="sketches/sketch8/sketch8.html" class="card">
-      <div class="thumb">
-        <img src="sketches/sketch8/src/thumb.webp" alt="binary">
-      </div>
-      <div class="title">Binary</div>
-      <div class="subtitle">2018-12-13</div>
-    </a>
-
-    <a href="sketches/sketch7/sketch7.html" class="card">
-      <div class="thumb">
-        <img src="sketches/sketch7/src/thumb.webp" alt="alias">
-      </div>
-      <div class="title">Alias Flow</div>
-      <div class="subtitle">Aliasing opens the door to another dimension… 2018-12-12</div>
-    </a>
-
-    <a href="sketches/sketch6/sketch6.html" class="card">
-      <div class="thumb">
-        <img src="sketches/sketch6/src/thumb.webp" alt="breathe">
-      </div>
-      <div class="title">Breathe</div>
-      <div class="subtitle">2014</div>
-    </a>
-
-    <a href="sketches/sketch5/sketch5.html" class="card">
-      <div class="thumb">
-        <img src="sketches/sketch5/src/thumb.png" alt="conf2">
-      </div>
-      <div class="title">Confusion 2</div>
-      <div class="subtitle">2014</div>
-    </a>
-
-    <a href="sketches/sketch4/sketch4.html" class="card">
-      <div class="thumb">
-        <img src="sketches/sketch4/src/thumb.webp" alt="conf1">
-      </div>
-      <div class="title">Confusion 1</div>
-      <div class="subtitle">2014</div>
-    </a>
-
-    <a href="sketches/sketch3/sketch3.html" class="card">
-      <div class="thumb">
-        <img src="sketches/sketch3/src/thumb.webp" alt="escher">
-      </div>
-      <div class="title">Escher 1</div>
-      <div class="subtitle">2013-01-03</div>
-    </a>
-    
-    <a href="sketches/sketch2/sketch2.html" class="card">
-      <div class="thumb">
-        <img src="sketches/sketch2/src/thumb.webp" alt="candy v3">
-      </div>
-      <div class="title">Candy V3</div>
-      <div class="subtitle">2012-10-07</div>
-    </a>
-
-    <a href="sketches/sketch1/sketch1.html" class="card">
-      <div class="thumb">
-        <img src="sketches/sketch1/src/thumb.webp" alt="candy v2">
-      </div>
-      <div class="title">Candy V2</div>
-      <div class="subtitle">2012-09-02</div>
-    </a>
-
-    <a href="sketches/sketch0/sketch0.html" class="card">
-      <div class="thumb">
-        <img src="sketches/sketch0/src/thumb.webp" alt="rawstroke">
-      </div>
-      <div class="title">Raw Stroke</div>
-      <div class="subtitle">2017-12-07</div>
-    </a>
-
-  </div>
-
-  <footer>
-    <p></p>
-  </footer>
+  <footer><p></p></footer>
 
   <script>
     // Hamburger toggle
     const toggle = document.querySelector('.nav-toggle');
     const nav = document.querySelector('.nav-links');
-    toggle.addEventListener('click', () => {
-      nav.classList.toggle('active');
+    toggle.addEventListener('click', () => nav.classList.toggle('active'));
+
+    // ---- Dynamic Thumbnail Loader ----
+    const sketches = [
+      // [number, title, date]
+      [40, "soma", "2025-10-03"],
+      [39, "Jaday peir uttay khair", "2025-09-12"],
+      [38, "Stars Are Projectors", "2025-09-01"],
+      [37, "Les Fantômes", "2025-08-24"],
+      [36, "S2", "2025-08-18"],
+      [35, "Fire", "2025-03-31"],
+      [34, "Goethe", "2025-03-28"],
+      [33, "Tinnitus", "2025-02-10"],
+      [32, "de_heel", "2024-08-22"],
+      [31, "بخشیا", "2024-08-08"],
+      [30, "Bedouin", "2024-07-14"],
+      [29, "Evanescent", "2024-03-10"],
+      [28, "Emerald", "2024-02-01"],
+      [27, "عارضی", "2024-01-30"],
+      [26, "Earendel", "2023-11-15"],
+      [25, "unprecedented.", "2023-10-13"],
+      [24, "1s/s", "2023-10-13"],
+      [23, "direction", "2023-09-24"],
+      [22, "to be a real person", "2023-09-14"],
+      [21, "age", "2023-04-13"],
+      [20, "Bifurcation", "2022-06-08"],
+      [19, "Weave", "2022-03-20"],
+      [18, "unconcern", "2021-10-12"],
+      [17, "OLLA2", "2021-09-29"],
+      [16, "OLLA1", "2021-09-22"],
+      [15, "Perpetual Departure", "2020-07-20"],
+      [14, "Tamasho", "2019-12-02"],
+      [13, "The Book of Sand", "2018-11-27"],
+      [12, "Touch and Go", "2019-08-08"],
+      [11, "Café Crème", "2019-08-02"],
+      [10, "ReDiving", "2019-07-26"],
+      [9, "Imran Mir", "2019-05-15"],
+      [8, "Binary", "2018-12-13"],
+      [7, "Alias Flow", "2018-12-12"],
+      [6, "Breathe", "2014"],
+      [5, "Confusion 2", "2014"],
+      [4, "Confusion 1", "2014"],
+      [3, "Escher 1", "2013-01-03"],
+      [2, "Candy V3", "2012-10-07"],
+      [1, "Candy V2", "2012-09-02"],
+      [0, "Raw Stroke", "2017-12-07"],
+    ];
+
+    const grid = document.getElementById("sketchGrid");
+
+    sketches.forEach(([num, title, date]) => {
+      const card = document.createElement("a");
+      card.href = `sketches/sketch${num}/sketch${num}.html`;
+      card.className = "card";
+      card.innerHTML = `
+        <div class="thumb">
+          <img src="sketches/thumbs/sketch${num}.jpg" alt="${title}" loading="lazy">
+        </div>
+        <div class="title">${title}</div>
+        <div class="subtitle">${date}</div>
+      `;
+      grid.appendChild(card);
     });
   </script>
 </body>
