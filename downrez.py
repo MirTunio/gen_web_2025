@@ -8,7 +8,7 @@ os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # Reasonable thresholds
 MAX_SIZE = (480, 480)        # Target display size
-MAX_FILE_SIZE_KB = 200       # Only optimize if file is bigger than this
+MAX_FILE_SIZE_KB = 400       # Only optimize if file is bigger than this
 
 for item in os.listdir(BASE_DIR):
     sketch_path = os.path.join(BASE_DIR, item)
