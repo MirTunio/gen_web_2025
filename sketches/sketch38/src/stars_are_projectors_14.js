@@ -22,7 +22,7 @@ let frames = [];          // store p5.Image objects
 let frameThresh = 140; // 20
 let blackPixels = [];     // array of arrays: blackPixels[f][]
 let blackPixelSets = [];  // array of Sets: blackPixelSets[f]
-let numFrames = 49;        // NUM FRAMES - 1 (last index)
+let numFrames = 31;        // NUM FRAMES - 1 (last index)
 let currentFrame = 0;     // current frame index
 let frameDir = 1;         // 1 = forward, -1 = backward
 let frameDuration = 100; // ms to hold each frame
