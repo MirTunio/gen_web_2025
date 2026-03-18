@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+  const base = document.createElement("base");
+  if (window.location.hostname.includes("github.io")) {
+    base.href = "/gen_web_2025/";
+  } else {
+    base.href = "/";
+  }
+  document.head.prepend(base);
+</script>
+<link rel="icon" href="assets/images/favicon.jpg" type="image/jpeg">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Burning Daylight — Alisha</title>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Cousine&display=swap');
+
+  :root {
+    --cream: #fdf8f2;
+    --ink: #2a1f14;
+    --soft: #8a7060;
+    --accent: #c8a97e;
+    --line: #e8ddd0;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Cousine', monospace;
+    font-size: 1em;
+    line-height: 1.6;
+    background: var(--cream);
+    color: var(--ink);
+    padding: 1.25em;
+    max-width: 62.5em;
+    margin: auto;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.5em;
+  }
+
+  header h1 { font-size: 1.5em; margin: 0; }
+
+  a.title-link {
+    text-decoration: none !important;
+    color: #000;
+    transition: color 0.3s ease;
+  }
+  a.title-link:hover { color: #666; }
+
+  nav a {
+    font-size: 1.1em;
+    margin-left: 1.25em;
+    text-decoration: none;
+    color: #333;
+  }
+  nav a:hover { text-decoration: underline; }
+
+  .nav-toggle {
+    display: none;
+    font-size: 1.5em;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  /* Page heading */
+  .page-title {
+    font-family: 'Lora', serif;
+    font-size: 2em;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 0.2em;
+    letter-spacing: -0.01em;
+  }
+
+  .page-subtitle {
+    font-size: 0.85em;
+    color: var(--soft);
+    margin-bottom: 3em;
+    letter-spacing: 0.05em;
+  }
+
+  /* Quote list */
+  .quotes {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .quote-item {
+    display: grid;
+    grid-template-columns: 7em 1fr;
+    gap: 1.5em;
+    padding: 1.5em 0;
+    border-bottom: 1px solid var(--line);
+    align-items: start;
+    opacity: 0;
+    transform: translateY(8px);
+    animation: fadeUp 0.4s ease forwards;
+  }
+
+  .quote-item:first-child { border-top: 1px solid var(--line); }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .quote-date {
+    font-size: 0.78em;
+    color: var(--soft);
+    padding-top: 0.15em;
+    letter-spacing: 0.03em;
+    line-height: 1.5;
+  }
+
+  .quote-body {}
+
+  .quote-text {
+    font-family: 'Lora', serif;
+    font-size: 1.05em;
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.55;
+    margin-bottom: 0.35em;
+  }
+
+  .quote-note {
+    font-size: 0.82em;
+    color: var(--soft);
+    line-height: 1.5;
+  }
+
+  footer {
+    margin-top: 3.75em;
+    font-size: 0.9em;
+    text-align: center;
+    color: #777;
+  }
+
+  @media (max-width: 37.5em) {
+    .quote-item {
+      grid-template-columns: 1fr;
+      gap: 0.4em;
+    }
+    .quote-date {
+      font-size: 0.75em;
+      color: var(--accent);
+    }
+    .nav-toggle { display: block; }
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      margin-top: 0.5em;
+      align-items: flex-end;
+    }
+    .nav-links.active { display: flex; }
+    .nav-links a { margin: 0.3em 0; font-size: 1.1em; text-align: right; }
+  }
+</style>
+</head>
+
+<body>
+  <header>
+    <h1><a class="title-link" href="index.html">Burning Daylight</a></h1>
+    <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+    <nav class="nav-links">
+      <a href="index.html">genart</a>
+      <a href="fiction.html">fiction</a>
+      <a href="nonfiction.html">nonfiction</a>
+      <a href="about.html">about</a>
+      <a href="contact.html">contact</a>
+    </nav>
+  </header>
+
+  <h2 class="page-title">Alisha Quotes</h2>
+  <p class="page-subtitle">collected observations, 2024 — ongoing</p>
+
+  <div class="quotes" id="quoteList"></div>
+
+  <footer><p></p></footer>
+
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('.nav-links');
+    toggle.addEventListener('click', () => nav.classList.toggle('active'));
+
+    const quotes = [
+      {
+        date: "Jan 2024",
+        text: "Thank you and you're welcome",
+        note: ""
+      },
+      {
+        date: "Jul 2024",
+        text: "Yeeees",
+        note: "When she agrees that her socks are cool, etc."
+      },
+      {
+        date: "Oct 2024",
+        text: "I'm not a teacher I'm the teacher",
+        note: "Telling me that I can't be pretend teacher."
+      },
+      {
+        date: "Oct 2024",
+        text: "No we're not eating it",
+        note: "When asked \"let's eat our food.\""
+      },
+      {
+        date: "Nov 2024",
+        text: "Where are mamas and mamoos going?",
+        note: ""
+      },
+      {
+        date: "Nov 2024",
+        text: "Don't laugh at me",
+        note: ""
+      },
+      {
+        date: "Dec 2024",
+        text: "Welcome to The My Hospital",
+        note: "When playing hospital."
+      },
+      {
+        date: "Dec 2024",
+        text: "I want to be Moana\nI want to sail\nCan I borrow your boat?",
+        note: ""
+      },
+      {
+        date: "Jan 2025",
+        text: "My brain likes it",
+        note: ""
+      },
+      {
+        date: "",
+        text: "Mamoo u want to come take me swimming with me?",
+        note: ""
+      },
+      {
+        date: "",
+        text: "One for you, and one for you!",
+        note: "Said to the same person."
+      },
+      {
+        date: "Oct 2025",
+        text: "You can do math here pretendly",
+        note: "After I said I need to go do math."
+      },
+      {
+        date: "Oct 2025",
+        text: "",
+        note: "Alisha is asked if she still has a cough. She coughs on Batul a few times on purpose to eliminate any doubt."
+      },
+      {
+        date: "",
+        text: "I have expensive eyelashes",
+        note: "After I said she has nice lashes and Farzana said my son has nice ones too — Alisha needed to settle the matter."
+      },
+      {
+        date: "Dec 2025",
+        text: "Just for funny",
+        note: "\"Why do you laugh like that Alisha?\""
+      },
+      {
+        date: "Dec 2025",
+        text: "Not-listening headphones",
+        note: ""
+      },
+      {
+        date: "Jan 2026",
+        text: "It's okay mamooo sometimes it's an accident and it's ok!",
+        note: "When I tried to fix a cutting activity she did wrong — she hadn't followed the line."
+      },
+      {
+        date: "Mar 2026",
+        text: "It's a plenty night to relax",
+        note: ""
+      },
+    ];
+
+    const list = document.getElementById('quoteList');
+
+    quotes.forEach((q, i) => {
+      const item = document.createElement('div');
+      item.className = 'quote-item';
+      item.style.animationDelay = `${i * 40}ms`;
+
+      const textHtml = q.text
+        ? `<div class="quote-text">${q.text.replace(/\n/g, '<br>')}</div>`
+        : '';
+      const noteHtml = q.note
+        ? `<div class="quote-note">${q.note}</div>`
+        : '';
+
+      item.innerHTML = `
+        <div class="quote-date">${q.date || '—'}</div>
+        <div class="quote-body">${textHtml}${noteHtml}</div>
+      `;
+      list.appendChild(item);
+    });
+  </script>
+</body>
+</html>
