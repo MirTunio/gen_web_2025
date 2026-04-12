@@ -14,8 +14,19 @@ let ydisp = 0;
 
 let vid;
 
+// function preload() {
+//   vid = createVideo('reference/test2.mp4');
+//   test2.webm
+// }
+
+let isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
 function preload() {
-  vid = createVideo('reference/test2.mp4');
+  if (isMobile) {
+    vid = createVideo('reference/test2.webm');
+  } else {
+    vid = createVideo('reference/test2.mp4');
+  }
 }
 
 function setup() {
