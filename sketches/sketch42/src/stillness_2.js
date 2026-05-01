@@ -22,11 +22,12 @@ let vid;
 let isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
 function preload() {
-  if (isMobile) {
-    vid = createVideo('reference/test2.webm');
-  } else {
-    vid = createVideo('reference/test2.mp4');
-  }
+    vid = createVideo(['reference/test2.webm', 'reference/test2.mp4']);
+  // if (isMobile) {
+  //   vid = createVideo('reference/test2.webm');
+  // } else {
+  //   vid = createVideo('reference/test2.mp4');
+  // }
 }
 
 function setup() {
@@ -36,10 +37,25 @@ function setup() {
   centerX = width / 2;
   centerY = height / 2;
   ydisp = height/3;
-  vid.hide();  // Hide the default HTML video element
-  vid.volume(0);  // Optional: mute it
-  vid.play();
-  vid.loop();  // Loop the video
+  
+  vid.hide();
+  vid.volume(0);
+  
+  // Explicitly set muted attribute - critical for Firefox autoplay
+  vid.elt.muted = true;
+  vid.elt.setAttribute('muted', '');
+  vid.elt.setAttribute('playsinline', '');  // iOS Safari needs this
+  vid.elt.setAttribute('autoplay', '');
+  
+  vid.loop();
+  
+  // Try to play, catch any rejection (some browsers return a Promise)
+  let playPromise = vid.elt.play();
+  if (playPromise !== undefined) {
+    playPromise.catch(error => {
+      console.log('Autoplay prevented:', error);
+    });
+  }
 }
 
 function draw() {
@@ -114,3 +130,11 @@ function draw() {
   }
   //text(frameCount, width - 150, height - 10);
 }
+
+function mousePressed() {
+  if (vid.elt.paused) {
+    vid.loop();
+  }
+}
+
+
