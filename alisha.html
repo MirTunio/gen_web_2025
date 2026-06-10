@@ -138,6 +138,30 @@
     line-height: 1.5;
   }
 
+  /* Dialogue format */
+  .quote-dialogue {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15em;
+    margin-bottom: 0.35em;
+  }
+
+  .dialogue-line {
+    font-family: 'Lora', serif;
+    font-size: 1.05em;
+    font-style: italic;
+    line-height: 1.55;
+  }
+
+  .dialogue-line.alisha {
+    color: var(--ink);
+  }
+
+  .dialogue-line.other {
+    color: var(--soft);
+    padding-left: 1.2em;
+  }
+
   footer {
     margin-top: 3.75em;
     font-size: 0.9em;
@@ -323,6 +347,24 @@
         text: "But I am so excited in my brain",
         note: "Giving a reason why she talks so much."
       },
+      {
+        date: "Jun 2026",
+        dialogue: [
+          { speaker: "alisha", line: "Mama I want to go see this lion. Where is this zoo." },
+          { speaker: "other",  line: "It's a jewellery store." },
+          { speaker: "alisha", line: "I want to go there." },
+          { speaker: "other",  line: "Why?" },
+          { speaker: "alisha", line: "I will buy you a necklace." },
+          { speaker: "other",  line: "Aww you're so kind." },
+          { speaker: "alisha", line: "Then when you go to a wedding, your jewelry will look so beautiful." },
+        ],
+        note: "Sees a Cartier ad near school featuring a cheetah. This conversation took place over many days — first had to figure out what she was even talking about, as the ad wasn't visible from where I was standing."
+      },
+      {
+        date: "Jun 2026",
+        text: "I am so thankful my baba got me a piano. Did the piano cost a lot of money? Did my baba run out of money? I don't think he did. Did he give him 5 money. 5 is the biggest",
+        note: ""
+      },
     ];
 
     const list = document.getElementById('quoteList');
@@ -332,9 +374,15 @@
       item.className = 'quote-item';
       item.style.animationDelay = `${i * 40}ms`;
 
-      const textHtml = q.text
-        ? `<div class="quote-text">${q.text.replace(/\n/g, '<br>')}</div>`
-        : '';
+      let textHtml = '';
+      if (q.dialogue) {
+        const lines = q.dialogue.map(d =>
+          `<div class="dialogue-line ${d.speaker}">${d.line}</div>`
+        ).join('');
+        textHtml = `<div class="quote-dialogue">${lines}</div>`;
+      } else if (q.text) {
+        textHtml = `<div class="quote-text">${q.text.replace(/\n/g, '<br>')}</div>`;
+      }
       const noteHtml = q.note
         ? `<div class="quote-note">${q.note}</div>`
         : '';
