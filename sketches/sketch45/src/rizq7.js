@@ -1,18 +1,6 @@
 // TUNIO 2026
 // rizq.
 
-// That mana/nourishment/livelihood/food which is ordained for you
-// No man can add to
-// And no man can subtract from it
-
-// visual: selling parcels of land
-
-// rizq: triangles subduvided continuously
-// and alpha'd away
-// rizq. dana pani. khoraaq.
-
-// uour fear.
-
 let t = 0;
 const xspace = 20;
 const yspace = xspace * Math.sqrt(3) / 2;
