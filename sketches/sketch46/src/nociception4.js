@@ -42,9 +42,11 @@ function draw() {
     }
   }
   
-  stroke(0);
+  stroke(155, 145, 135);
+  strokeWeight(2);
   noFill();
   rect(0,0,width,height);
+  strokeWeight(1);
 }
 
 function draw_ception(startX, startY){
